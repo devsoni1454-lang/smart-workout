@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-    try {
-        const conn = await mongoose.connect(process.env.MONGO_URI, {
-            // These options are no longer necessary in Mongoose 6+, but harmless to include for older versions or clarity if needed.
-            // keeping it clean for modern mongoose
-        });
+    if (!process.env.MONGO_URI) {
+        console.error('CRITICAL ERROR: MONGO_URI is not defined in environment variables.');
+        process.exit(1);
+    }
 
-        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    try {
+        console.log('Attempting to connect to MongoDB...');
+        const conn = await mongoose.connect(process.env.MONGO_URI);
+        console.log(`MongoDB Connected successfully: ${conn.connection.host}`);
     } catch (error) {
-        console.error(`Error: ${error.message}`);
+        console.error(`MongoDB Connection Error: ${error.message}`);
+        console.error('Ensure you have whitelisted 0.0.0.0/0 in MongoDB Atlas.');
         process.exit(1);
     }
 };
