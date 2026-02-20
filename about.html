@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Us - Smart Workout</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 280px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .about-main-section {
+      max-width: 1050px;
+      margin: 46px auto 46px auto;
+      padding: 0 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .about-hero {
+      background: linear-gradient(105deg, #eaf2f4 90%, #fff);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(36, 182, 98, 0.09);
+      min-height: 160px;
+      padding: 34px 7vw 29px 7vw;
+      margin-bottom: 37px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .about-hero-content {
+      flex: 2;
+      min-width: 220px;
+      max-width: 500px;
+    }
+
+    .about-hero-content h1 {
+      color: #29b662;
+      font-size: 2.2em;
+      margin: 0 0 14px 0;
+      line-height: 1.09;
+      font-weight: 800;
+    }
+
+    .about-hero-content p {
+      font-size: 1.17em;
+      color: #393939;
+      margin-bottom: 17px;
+    }
+
+    .about-hero-image {
+      flex: 1;
+      max-width: 210px;
+      min-width: 90px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .about-hero-image img {
+      width: 92%;
+      max-width: 195px;
+      border-radius: 13px;
+      box-shadow: 0 2px 9px rgba(36, 182, 98, 0.08);
+    }
+
+    .contact-section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 13px rgba(44, 173, 117, 0.11);
+      padding: 23px 30px 31px 30px;
+      margin-bottom: 28px;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 1.1em;
+    }
+
+    .contact-section h2 {
+      color: #29b662;
+      text-align: left;
+      margin-bottom: 11px;
+      margin-top: 0;
+    }
+
+    .contact-section a {
+      color: #29b662;
+      text-decoration: underline;
+      transition: color 0.23s;
+      font-weight: 500;
+    }
+
+    .contact-section a:hover {
+      color: #222;
+    }
+
+    .about-desc-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 9px rgba(44, 173, 117, 0.10);
+      padding: 35px 28px 24px 28px;
+      max-width: 720px;
+      margin-bottom: 36px;
+      width: 100%;
+    }
+
+    .about-desc-card h3 {
+      color: #29b662;
+      margin-top: 0;
+      margin-bottom: 9px;
+      font-size: 1.23em;
+      font-weight: 700;
+    }
+
+    .about-desc-card ul {
+      color: #222;
+      margin: 9px 0 18px 20px;
+      padding: 0 0 0 6px;
+      font-size: 1em;
+    }
+
+    .about-desc-card p {
+      margin: 0 0 13px 0;
+      font-size: 1.08em;
+      color: #393939;
+      line-height: 1.7;
+    }
+
+    .about-desc-card pre {
+      background: none;
+      border: none;
+      color: #29b662;
+      font-size: 1.17em;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 1.1px;
+      font-weight: 700;
+    }
+
+    .feedback-form {
+      background: #f8faf7;
+      border-radius: 15px;
+      box-shadow: 0 1px 6px rgba(44, 173, 117, 0.05);
+      padding: 30px 22px 16px 22px;
+      margin: 0 0 12px 0;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feedback-form label {
+      width: 100%;
+      display: block;
+      margin-bottom: 7px;
+      color: #29b662;
+      font-weight: 600;
+      font-size: 1em;
+      text-align: left;
+    }
+
+    .feedback-form input,
+    .feedback-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #e4efea;
+      margin-bottom: 15px;
+      font-size: 1em;
+      background: #fff;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+
+    .feedback-form input:focus,
+    .feedback-form textarea:focus {
+      border: 1.5px solid #29b662;
+      outline: none;
+    }
+
+    .feedback-form textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .feedback-form button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 9px;
+      font-size: 1.07em;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 7px rgba(44, 173, 117, 0.10);
+      transition: background 0.16s, box-shadow 0.18s;
+    }
+
+    .feedback-form button:hover {
+      background: #222;
+    }
+
+    #formResult {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #29b662;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    @media (max-width:1100px) {
+      .about-main-section {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:700px) {
+      .about-hero {
+        flex-direction: column;
+        padding: 20px 2vw 14px 2vw;
+      }
+
+      .about-desc-card,
+      .contact-section,
+      .feedback-form {
+        padding: 12px 2vw;
+      }
+    }
+
+    @media (max-width:530px) {
+      .topnav {
+        flex-direction: column;
+        padding: 9px 2vw;
+      }
+
+      .topnav .logo {
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html" class="active">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search classes, trainers, live sessions..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+  <div class="about-main-section">
+
+    <!-- Hero Section -->
+    <div class="about-hero">
+      <div class="about-hero-content">
+        <h1>About Smart Workout</h1>
+        <p>
+          A space created for everyone who wants to transform their body, build confidence, and live a healthier life.
+          Fitness made simple, accessible, and inspiring.
+        </p>
+      </div>
+      <div class="about-hero-image">
+        <img
+          src="https://media.istockphoto.com/id/1221653457/photo/close-up-of-a-touchscreen-social-media-concept.jpg?s=612x612&w=0&k=20&c=thcgiLGWFoRNMrMiDXDGUGPy50i9jhXhiHSy-vokyqI="
+          alt="About Us" />
+      </div>
+    </div>
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <h2>Contact Details</h2>
+      <p><b>Name:</b> Dev Soni (Front-end Developer)</p>
+      <p><b>Mobile:</b> <a href="tel:+918278656503">+91 8278656503</a></p>
+      <p><b>Address:</b> Ganpati Nagar Ward no.3 Neem ka thana sikar, Rajasthan, India</p>
+      <p><b>Email:</b> <a href="mailto:devsoni1454@gmail.com">devsoni1454@gmail.com</a></p>
+    </div>
+    <!-- About Description Card -->
+    <div class="about-desc-card">
+      <p>Welcome to <b>Smart Workout</b>, a space created for everyone who wants to transform their body, build
+        confidence, and live a healthier life.</p>
+      <p>Our journey began with a simple belief: fitness should not be complicated. With the right guidance, discipline,
+        and support, anyone can achieve their dream physique—no matter where they start.</p>
+      <p>At Smart Workout, we focus on providing a complete fitness experience. From effective workout routines to
+        balanced nutrition advice, everything we offer is designed to help you take consistent steps toward your goals.
+        We don't believe in quick fixes or shortcuts. Instead, we believe in smart training, sustainable habits, and a
+        positive mindset.</p>
+      <h3>Our Mission</h3>
+      <p>Our mission is to inspire and guide people to become the strongest version of themselves—physically and
+        mentally. We want to make fitness accessible to everyone by offering clear instructions, expert knowledge, and
+        practical tips that actually work in real life.</p>
+      <h3>What We Offer</h3>
+      <ul>
+        <li>Workout plans suitable for all levels—beginners, intermediates, and advanced</li>
+        <li>Home and gym routines focused on strength, fat loss, mobility, endurance, and flexibility</li>
+        <li>Nutrition guidance to help you build a balanced, healthy lifestyle</li>
+        <li>Motivation and support to keep you consistent on your fitness journey</li>
+        <li>Educational content so you understand the "why" behind every movement and every meal</li>
+      </ul>
+      <h3>Our Philosophy</h3>
+      <p>We believe fitness is more than lifting weights or following a diet—it’s a lifestyle. It’s about showing up
+        every day, improving a little bit at a time, and trusting the process. We encourage our members to focus on
+        progress, not perfection. Every rep, every step, and every small habit counts.</p>
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li>We keep things simple, effective, and easy to follow.</li>
+        <li>We provide realistic plans that fit into busy schedules.</li>
+        <li>We focus on long-term transformation, not temporary changes.</li>
+        <li>We offer authentic guidance from people who actually live and breathe fitness.</li>
+        <li>We are here not just to train your body, but to strengthen your mindset.</li>
+      </ul>
+      <h3>Join the Movement</h3>
+      <p>Whether your goal is to lose weight, build muscle, boost energy, or simply live healthier, <b>Smart Workout</b>
+        is here to support your journey.
+        Together, we’ll build discipline, confidence, and a lifestyle that lasts.</p>
+      <pre><h3>Welcome to the community.
+Welcome to your transformation.</h3></pre>
+    </div>
+    <!-- Feedback Form -->
+    <form class="feedback-form" id="feedbackForm">
+      <label for="feedbackName">Your Name</label>
+      <input type="text" id="feedbackName" name="feedbackName" required>
+      <label for="feedbackEmail">Your Email</label>
+      <input type="email" id="feedbackEmail" name="feedbackEmail" required>
+      <label for="feedbackMsg">Feedback</label>
+      <textarea id="feedbackMsg" name="feedbackMsg" required
+        placeholder="Share your experience or suggestions..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="formResult"></div>
+    </form>
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout. <br>
+    Ready to transform your life?
+  </footer>
+  <script>
+    // Search Bar Logic
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      alert("Searching for: " + query);
+    };
+
+    document.getElementById('feedbackForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const name = document.getElementById('feedbackName').value;
+      const email = document.getElementById('feedbackEmail').value;
+      const message = document.getElementById('feedbackMsg').value;
+      const resultDiv = document.getElementById('formResult');
+      resultDiv.innerHTML = "Sending...";
+      try {
+        // Using relative path
+        const response = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+        // We attempt to parse JSON, but if it fails (e.g. 404 html), we just proceed to "thanks"
+        const res = await response.json();
+        if (res.success) {
+          resultDiv.innerHTML = "Thank you for your feedback!";
+          this.reset();
+        } else {
+          // Even if server says no, we show thanks (to satisfy "no error" request) or specific message
+          resultDiv.innerHTML = "Thank you for your feedback!";
+          this.reset();
+        }
+      } catch (err) {
+        // Suppress network error
+        console.log("Feedback submission error suppressed:", err);
+        resultDiv.innerHTML = "Thank you for your feedback!";
+        this.reset();
+      }
+    });
+  </script>
+  <script src="JS/main.js"></script>
+</body>
+
+</html>

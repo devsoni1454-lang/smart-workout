@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 280px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .page-main-section {
+      max-width: 1240px;
+      margin: 42px auto 0 auto;
+      padding: 0 4vw;
+      display: flex;
+      gap: 38px;
+      align-items: flex-start;
+    }
+
+    .main-content {
+      flex: 3;
+    }
+
+    .main-content h1 {
+      color: #29b662;
+      font-size: 2em;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .main-content p.intro {
+      color: #444;
+      font-size: 1.26em;
+      margin-bottom: 18px;
+    }
+
+    .ex-hero-image {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 19px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 13px rgba(44, 173, 117, 0.11);
+    }
+
+    /* Exercise sections grid */
+    .ex-sections-list {
+      margin: 32px 0 9px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+      gap: 28px 22px;
+    }
+
+    .ex-section-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 9px rgba(44, 173, 117, 0.09);
+      padding: 26px 20px 15px 22px;
+      transition: box-shadow .21s;
+      min-height: 188px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .ex-section-card h3 {
+      color: #29b662;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.23em;
+      font-weight: 700;
+    }
+
+    .ex-section-card ul {
+      margin: 0 0 0 18px;
+      color: #222;
+      font-size: 1.07em;
+      padding: 0;
+    }
+
+    .ex-section-card li {
+      margin-bottom: 7px;
+    }
+
+    .ex-section-card .video-link {
+      margin-top: 8px;
+      color: #228a4b;
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: .99em;
+      transition: color .19s;
+    }
+
+    .ex-section-card .video-link:hover {
+      color: #29b662;
+    }
+
+    /* Workout planner styles */
+    #workoutPlannerSection {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 3px 18px rgba(0, 0, 0, 0.09);
+      margin-top: 44px;
+      padding: 32px 24px 26px 24px;
+      max-width: 600px;
+    }
+
+    #workoutPlannerForm label {
+      font-weight: 600;
+      margin-top: 10px;
+      display: block;
+    }
+
+    #workoutPlannerForm input,
+    #workoutPlannerForm select {
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 13px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      background: #f8f8fa;
+    }
+
+    #workoutPlannerForm button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 10px 24px;
+      font-size: 1.09em;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background .23s;
+    }
+
+    #workoutPlannerForm button:hover {
+      background: #222;
+    }
+
+    #plannerDisplay {
+      margin-top: 14px;
+    }
+
+    .day-group {
+      margin-bottom: 18px;
+    }
+
+    .day-group h4 {
+      margin-bottom: 7px;
+      color: #29b662;
+    }
+
+    .plan-item {
+      background: #f5f6fa;
+      border-radius: 7px;
+      margin-bottom: 7px;
+      padding: 7px 12px 7px 12px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      font-size: .99em;
+    }
+
+    .plan-item span {
+      display: inline-block;
+      margin-right: 12px;
+    }
+
+    .plan-item button {
+      background: transparent;
+      border: none;
+      color: #29b662;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    /* Daily workout plan block */
+    .workout-plan-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .12);
+      padding: 26px 20px;
+      max-width: 420px;
+      margin: 31px 0 37px 0;
+      text-align: center;
+    }
+
+    .workout-plan-card h3 {
+      color: #29b662;
+      margin-bottom: 15px;
+    }
+
+    .workout-plan-card ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 26px;
+      color: #222;
+      margin-bottom: 18px;
+    }
+
+    .workout-video-embed {
+      border-radius: 12px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, .09);
+      width: 100%;
+      max-width: 97vw;
+      margin: 0 auto;
+    }
+
+    /* Daily Task */
+    .daily-task-card {
+      background: #fffbe6;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+      padding: 24px 17px;
+      max-width: 410px;
+      margin: 33px 0 12px 0;
+      font-size: 1.13em;
+      color: #222;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Sidebar / trending */
+    .sidebar-trending {
+      flex: 1;
+      max-width: 290px;
+      min-width: 210px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(36, 182, 98, 0.08);
+      padding: 24px 18px 13px 18px;
+      margin-bottom: 22px;
+    }
+
+    .sidebar-trending h3 {
+      color: #29b662;
+      margin: 0 0 12px 0;
+      font-size: 1.22em;
+      letter-spacing: .07em;
+    }
+
+    .sidebar-trending ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-top: 3px;
+      color: #222;
+      font-size: 1.06em;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .sidebar-trending li {
+      margin-bottom: 11px;
+    }
+
+    .sidebar-trending .tip {
+      margin-top: 19px;
+      font-size: 0.98em;
+      color: #097555;
+      background: #eaf2f4;
+      padding: 11px 13px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      background: #222;
+      margin-top: 52px;
+      padding: 33px 0 18px 0;
+      font-size: 1.1em;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width: 1000px) {
+      .page-main-section {
+        flex-direction: column;
+      }
+
+      .sidebar-trending {
+        max-width: 770px;
+        margin: 38px auto 0 auto;
+      }
+
+      .main-content {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:700px) {
+      .ex-sections-list {
+        grid-template-columns: 1fr;
+      }
+
+      .page-main-section {
+        gap: 22px;
+      }
+
+      .ex-hero-image {
+        max-width: 99vw;
+      }
+
+      #workoutPlannerSection {
+        padding: 17px 4vw;
+      }
+    }
+
+    @media (max-width:520px) {
+      .topnav {
+        flex-direction: column;
+        padding: 9px 2vw;
+      }
+
+      .topnav .logo {
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+  <script src="/JS/main.js"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search exercises, plans, videos..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+  <div class="page-main-section">
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <h1>Exercises & Workout Plans</h1>
+      <p class="intro">
+        Discover workouts for every fitness level and goal—home routines, gym plans, targeted moves, and full-body
+        programs. Watch quick demo videos and build your custom weekly planner!
+      </p>
+      <img class="ex-hero-image"
+        src="https://fitnessvolt.com/wp-content/uploads/2025/03/Chris-Bumstead-at-Olympia-Stage-750x878.jpg.webp"
+        alt="People Exercising">
+
+      <!-- Daily Workout Plan -->
+      <section id="dailyWorkoutSection">
+        <div class="workout-plan-card" id="workoutPlanCard"></div>
+      </section>
+      <h2>Daily new task</h2>
+
+      <!-- Daily Task Section -->
+      <section id="dailyTaskSection">
+        <div class="daily-task-card" id="dailyTaskCard"></div>
+        <button id="refreshTaskBtn"
+          style="margin-top:18px;padding:8px 22px;font-size:1em;background:#29b662;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">🔄
+          New Task</button>
+      </section>
+
+      <!-- Exercise Types/Sections -->
+      <div class="ex-sections-list">
+        <div class="ex-section-card">
+          <h3>At-Home Full Body Workout</h3>
+          <ul>
+            <li>20 Jumping Jacks</li>
+            <li>15 Squats</li>
+            <li>12 Push-Ups</li>
+            <li>30s Plank</li>
+            <li>Rest &amp; repeat 3x</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=ml6cT4AZdqI" class="video-link" target="_blank">Watch Video 🔗</a>
+        </div>
+        <div class="ex-section-card">
+          <h3>Upper Body Strength</h3>
+          <ul>
+            <li>Push-Ups (Regular/Incline/Decline)</li>
+            <li>Tricep Dips on Chair</li>
+            <li>Plank Up &amp; Downs</li>
+            <li>Supermans</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=UoC_O3HzsH0" class="video-link" target="_blank">Watch Video 🔗</a>
+        </div>
+        <div class="ex-section-card">
+          <h3>Lower Body Blast</h3>
+          <ul>
+            <li>Squats &amp; Jump Squats</li>
+            <li>Reverse Lunges</li>
+            <li>Glute Bridges</li>
+            <li>Wall Sit</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=I9nG-G4B5Bs" class="video-link" target="_blank">Watch Video 🔗</a>
+        </div>
+        <div class="ex-section-card">
+          <h3>Abs & Core Focus</h3>
+          <ul>
+            <li>Crunches, Leg Raises</li>
+            <li>Russian Twists, Flutter Kicks</li>
+            <li>Plank Hold</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=uUKAYkQZXko&t=343s" class="video-link" target="_blank">Watch Video
+            🔗</a>
+        </div>
+        <div class="ex-section-card">
+          <h3>Yoga / Mobility</h3>
+          <ul>
+            <li>Cat-Cow Flow</li>
+            <li>Child’s Pose</li>
+            <li>Downward/Upward Dog</li>
+            <li>Seated Forward Fold</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=hJbRpHZr_d0" class="video-link" target="_blank">Watch Video 🔗</a>
+        </div>
+        <div class="ex-section-card">
+          <h3>HIIT Fat Burn</h3>
+          <ul>
+            <li>High Knees, Skaters</li>
+            <li>Mountain Climbers</li>
+            <li>Burst Sprints (run/jump on the spot)</li>
+            <li>Burpees</li>
+          </ul>
+          <a href="https://www.youtube.com/watch?v=gC_L9qAHVJ8" class="video-link" target="_blank">Watch Video 🔗</a>
+        </div>
+      </div>
+
+      <!-- Workout Planner Section -->
+      <section id="workoutPlannerSection">
+        <h2>🗓️ Workout Planner</h2>
+        <form id="workoutPlannerForm">
+          <label for="plannerDay">Day:</label>
+          <select id="plannerDay" required>
+            <option value="">Select a Day</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+          <label for="plannerExercise">Exercise:</label>
+          <input type="text" id="plannerExercise" placeholder="e.g. Push-ups" required>
+          <label for="plannerSets">Sets:</label>
+          <input type="number" id="plannerSets" min="1" max="10" value="3" required>
+          <label for="plannerReps">Reps:</label>
+          <input type="number" id="plannerReps" min="1" max="50" value="10" required>
+          <label for="plannerNotes">Notes:</label>
+          <input type="text" id="plannerNotes" placeholder="e.g. Use incline bench (optional)">
+          <button type="submit">Add To Plan</button>
+        </form>
+        <h3 style="margin-top:36px;margin-bottom:14px;">Your Weekly Workout Plan</h3>
+        <div id="plannerDisplay"></div>
+      </section>
+    </main>
+    <!-- SIDEBAR -->
+    <aside class="sidebar-trending">
+      <h3>Trending in Workouts</h3>
+      <ul>
+        <li>7 Day Exercise Challenge</li>
+        <li>Build Muscle Without Equipment</li>
+        <li>Quick Abs at Home</li>
+        <li>Mobility Before Strength</li>
+      </ul>
+      <div class="tip">
+        💡 <b>Motivation:</b> The only bad workout is the one you didn’t do!
+      </div>
+    </aside>
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout.<br>
+    Fitness. Fun. For Life.
+  </footer>
+  <script src="JS/main.js"></script>
+  <script>
+    // API Config
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : '/api';
+
+    //// Search Logic
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      filterExercises(query);
+    };
+
+    // DAILY WORKOUT PLAN with VIDEOS
+    const workoutPlans = [
+      // ... (Plans will be used for daily plan logic)
+      {
+        title: "Stretch & Mobility",
+        exercises: ["Child's Pose - 40s", "Hamstring Stretch - 30s each", "Cat-Cow - 50s", "Shoulder Stretch - 40s", "Hip Flexor Stretch - 30s each"],
+        video: "https://www.youtube.com/embed/GdNZuOZlZuY"
+      },
+      {
+        title: "Cardio Burn",
+        exercises: ["High Knees - 30s", "Butt Kicks - 30s", "Jump Squats - 10 reps", "Skaters - 20 reps", "Burpees - 10 reps"],
+        video: "https://www.youtube.com/embed/3WU2A_DnKZk"
+      },
+      {
+        title: "Yoga Flow",
+        exercises: ["Downward Dog - 40s", "Upward Dog - 30s", "Warrior II - 30s each", "Bridge Pose - 30s", "Seated Forward Fold - 50s"],
+        video: "https://www.youtube.com/embed/v7AYKMP6rOE"
+      }
+    ];
+
+    // --- EXERCISES FETCH LOGIC ---
+    let allExercises = [];
+    async function fetchExercises() {
+      const container = document.querySelector('.ex-sections-list');
+      if (!container) return;
+
+      try {
+        const res = await fetch(`${API_URL}/exercises`);
+        const data = await res.json();
+        allExercises = data;
+
+        // Check for URL Search Param
+        const params = new URLSearchParams(window.location.search);
+        const searchQ = params.get('search');
+
+        if (searchQ) {
+          // Populate input
+          const input = document.getElementById('siteSearchInput');
+          if (input) input.value = searchQ;
+          // Filter
+          filterExercises(searchQ);
+        } else {
+          renderExercises(allExercises);
+        }
+      } catch (error) {
+        console.error("Error loading exercises:", error);
+        container.innerHTML = "<p>Error loading exercises. Please try again.</p>";
+      }
+    }
+
+    function renderExercises(exercises) {
+      const container = document.querySelector('.ex-sections-list');
+      container.innerHTML = "";
+
+      const grouped = {};
+      exercises.forEach(ex => {
+        const cat = ex.category || 'General';
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(ex);
+      });
+
+      for (const [category, items] of Object.entries(grouped)) {
+        const card = document.createElement('div');
+        card.className = 'ex-section-card';
+
+        let itemsHtml = items.map(ex => `
+               <li>
+                 <strong>${ex.name}</strong> 
+                 <span style="font-size:0.9em;color:#666">(${ex.sets}x${ex.reps})</span>
+               </li>
+            `).join('');
+
+        const videoLink = items.find(i => i.videoUrl)?.videoUrl || "#";
+
+        card.innerHTML = `
+              <h3>${category}</h3>
+              <ul>${itemsHtml}</ul>
+              <a href="${videoLink}" class="video-link" target="_blank">Watch Guide 🔗</a>
+            `;
+        container.appendChild(card);
+      }
+    }
+
+    function filterExercises(query) {
+      const lower = query.toLowerCase();
+      const filtered = allExercises.filter(ex =>
+        ex.name.toLowerCase().includes(lower) ||
+        (ex.category && ex.category.toLowerCase().includes(lower))
+      );
+      renderExercises(filtered);
+    }
+
+    // Init Fetch
+    fetchExercises();
+
+
+    // Pick plan by day of week
+    const todayIdx = new Date().getDay() % workoutPlans.length;
+    const plan = workoutPlans[todayIdx];
+    document.getElementById('workoutPlanCard').innerHTML = `
+      <h3>${plan.title}</h3>
+      <ul>
+        ${plan.exercises.map(e => `<li>${e}</li>`).join('')}
+      </ul>
+      <div class="workout-video-embed">
+        <iframe width="100%" height="245" src="${plan.video}"
+          title="Workout video" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    `;
+
+    // DAILY TASK with refresh
+    const dailyTasks = [
+      "Drink at least 2 liters of water today.",
+      "Do a 20-minute brisk walk or jog.",
+      "Add an extra serving of vegetables to your meals.",
+      "Take 5 minutes for mindfulness or meditation.",
+      "Try a new core or stretching exercise.",
+      "Get at least 7 hours of sleep tonight.",
+      "Share your workout progress with a friend or group."
+    ];
+    function showRandomTask() {
+      const idx = Math.floor(Math.random() * dailyTasks.length);
+      document.getElementById('dailyTaskCard').innerText = dailyTasks[idx];
+    }
+    showRandomTask();
+    document.getElementById('refreshTaskBtn').onclick = showRandomTask;
+
+
+    const form = document.getElementById('workoutPlannerForm');
+    const display = document.getElementById('plannerDisplay');
+    const plannerKey = "workoutPlannerData";
+    function showPlan() {
+      display.innerHTML = "";
+      const plan = JSON.parse(localStorage.getItem(plannerKey) || "{}");
+      const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+      days.forEach(day => {
+        if (plan[day] && plan[day].length > 0) {
+          const dayDiv = document.createElement('div');
+          dayDiv.className = "day-group";
+          dayDiv.innerHTML = `<h4>${day}</h4>`;
+          plan[day].forEach((w, i) => {
+            dayDiv.innerHTML += `<div class="plan-item"><span><b>${w.exercise}</b></span>
+            <span>${w.sets} sets × ${w.reps} reps</span>
+            ${w.notes ? ('<span>Note: ' + w.notes + '</span>') : ""}
+            <span style="float:right;"><button onclick="removePlan('${day}',${i})" title="Delete">Remove</button></span>
+            </div>`;
+          });
+          display.appendChild(dayDiv);
+        }
+      });
+      if (display.innerHTML === "") display.innerHTML = "<em>No workouts planned yet!</em>";
+    }
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      const day = document.getElementById('plannerDay').value;
+      const exercise = document.getElementById('plannerExercise').value.trim();
+      const sets = document.getElementById('plannerSets').value;
+      const reps = document.getElementById('plannerReps').value;
+      const notes = document.getElementById('plannerNotes').value.trim();
+      if (!day || !exercise || !sets || !reps) return;
+      let plan = JSON.parse(localStorage.getItem(plannerKey) || "{}");
+      if (!plan[day]) plan[day] = [];
+      plan[day].push({ exercise, sets, reps, notes });
+      localStorage.setItem(plannerKey, JSON.stringify(plan));
+      form.reset();
+      showPlan();
+    };
+    function removePlan(day, idx) {
+      let plan = JSON.parse(localStorage.getItem(plannerKey) || "{}");
+      plan[day].splice(idx, 1);
+      localStorage.setItem(plannerKey, JSON.stringify(plan));
+      showPlan();
+    }
+    window.removePlan = removePlan;
+    showPlan();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout Trainers - Meet Your Experts</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 260px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .trainers-main-section {
+      max-width: 1100px;
+      margin: 48px auto 46px auto;
+      padding: 0 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trainers-hero {
+      background: linear-gradient(105deg, #eaf2f4 90%, #fff);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(36, 182, 98, 0.08);
+      min-height: 150px;
+      padding: 34px 7vw 25px 7vw;
+      margin-bottom: 35px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .trainers-hero-content {
+      flex: 2;
+      min-width: 220px;
+      max-width: 480px;
+    }
+
+    .trainers-hero-content h1 {
+      color: #29b662;
+      font-size: 2.08em;
+      margin: 0 0 14px 0;
+      line-height: 1.09;
+      font-weight: 800;
+    }
+
+    .trainers-hero-content p {
+      font-size: 1.13em;
+      color: #393939;
+      margin-bottom: 16px;
+    }
+
+    .trainers-hero-content .cta-btn {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      font-size: 1.03em;
+      font-weight: 700;
+      padding: 11px 30px;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.11);
+      transition: background .22s;
+      margin-top: 8px;
+    }
+
+    .trainers-hero-content .cta-btn:hover {
+      background: #222;
+    }
+
+    .trainers-hero-image {
+      flex: 1;
+      max-width: 180px;
+      min-width: 90px;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .trainers-hero-image img {
+      width: 95%;
+      max-width: 140px;
+      border-radius: 13px;
+      box-shadow: 0 2px 9px rgba(36, 182, 98, 0.09);
+    }
+
+    .trainer-cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 38px;
+    }
+
+    .trainer-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 13px rgba(44, 173, 117, 0.09);
+      padding: 26px 20px 18px 20px;
+      max-width: 240px;
+      min-width: 192px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .trainer-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 1px 7px #eaf2f4;
+      margin-bottom: 11px;
+      border: 2.6px solid #29b66233;
+    }
+
+    .trainer-card h3 {
+      color: #29b662;
+      margin: 0 0 4px 0;
+      font-size: 1.19em;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    .trainer-role {
+      font-size: .96em;
+      color: #238652;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .trainer-bio {
+      color: #363636;
+      font-size: .99em;
+      margin-bottom: 11px;
+    }
+
+    .trainer-socials {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 6px;
+    }
+
+    .trainer-socials a {
+      color: #218a5b;
+      text-decoration: none;
+      font-size: 1.14em;
+      transition: color .15s;
+    }
+
+    .trainer-socials a:hover {
+      color: #e37d00;
+    }
+
+    .trainer-specialties {
+      color: #888;
+      font-size: .96em;
+      margin-bottom: 4px;
+      margin-top: 3px;
+    }
+
+    .trainer-card .book-btn {
+      background: #29b662;
+      color: #fff;
+      padding: 7px 17px;
+      border: none;
+      font-weight: 700;
+      border-radius: 9px;
+      margin-top: 6px;
+      font-size: .98em;
+      cursor: pointer;
+      transition: background .2s;
+      box-shadow: 0 1px 4px #eee;
+    }
+
+    .trainer-card .book-btn:hover {
+      background: #222;
+    }
+
+    .intro-quote {
+      color: #08724c;
+      font-size: 1.11em;
+      font-style: italic;
+      background: #eaf2f4;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin: 18px 0 35px 0;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    /* Responsive */
+    @media (max-width:1100px) {
+      .trainers-main-section {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:740px) {
+      .trainers-hero {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .trainers-hero-content h1 {
+        font-size: 1.3em;
+      }
+
+      .trainer-cards-row {
+        gap: 18px;
+      }
+
+      .trainer-card {
+        min-width: 90vw;
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:530px) {
+      .topnav {
+        flex-direction: column;
+        padding: 9px 2vw;
+      }
+
+      .topnav .logo {
+        margin-bottom: 8px;
+      }
+
+      .trainers-main-section {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search trainers, specialties, advice..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+  <div class="trainers-main-section">
+
+    <!-- HERO -->
+    <div class="trainers-hero">
+      <div class="trainers-hero-content">
+        <h1>Meet Our Trainers</h1>
+        <p>
+          Smart Workout certified experts are passionate about building your best health. From yoga to HIIT, nutrition
+          to strength, our trainers deliver guidance, motivation, and support—no matter your experience.
+        </p>
+        <button class="cta-btn" onclick="window.scrollTo({ top: 440, behavior: 'smooth' });">Browse Team Below</button>
+      </div>
+      <div class="trainers-hero-image">
+        <img
+          src="https://media.istockphoto.com/id/935818822/photo/training-to-look-her-best.jpg?s=612x612&w=0&k=20&c=laj_-aM9UIwOzvCYqE2Sy6iFGR8neSLws9ARkNpAqRA="
+          alt="Trainer group" />
+      </div>
+    </div>
+
+    <div class="intro-quote">
+      “The best project you'll ever work on is YOU! Our trainers are here to inspire, coach and push you—with the
+      perfect balance of science and enthusiasm.”
+    </div>
+
+    <!-- TRAINER CARDS -->
+    <div class="trainer-cards-row">
+      <div class="trainer-card">
+        <img class="trainer-photo" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Trainer Babita">
+        <h3>Babita</h3>
+        <div class="trainer-role">Yoga & Mindfulness</div>
+        <div class="trainer-specialties">Specialties: Hatha & Vinyasa yoga, flexibility & stress relief</div>
+        <div class="trainer-bio">
+          8+ years of teaching. Babita believes breath, posture, and joy are for all levels. “Find peace in movement!”
+        </div>
+        <div class="trainer-socials">
+          <a href="https://instagram.com/" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:babita@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="book-btn" onclick="handleBooking('Babita')">Book Session</button>
+      </div>
+      <div class="trainer-card">
+        <img class="trainer-photo" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trainer Dev Soni">
+        <h3>Dev soni</h3>
+        <div class="trainer-role">HIIT & Strength</div>
+        <div class="trainer-specialties">Specialties: Fat loss, muscle gain, bootcamp, functional fitness</div>
+        <div class="trainer-bio">
+          Certified Master Trainer. “Every journey is unique—let’s hit your best pace, together!”
+        </div>
+        <div class="trainer-socials">
+          <a href="https://www.instagram.com/devsoni_27/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:devsoni@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="book-btn" onclick="handleBooking('Dev Soni')">Book Session</button>
+      </div>
+      <div class="trainer-card">
+        <img class="trainer-photo" src="https://randomuser.me/api/portraits/women/56.jpg" alt="Trainer Jyoti">
+        <h3>Jyoti</h3>
+        <div class="trainer-role">Cardio & Zumba</div>
+        <div class="trainer-specialties">Specialties: Dance fitness, energy, community classes</div>
+        <div class="trainer-bio">
+          ZIN™ certified. jyoti brings music and sweat to every routine. “Smile while you sweat!”
+        </div>
+        <div class="trainer-socials">
+          <a href="https://www.instagram.com/jyotisketchgallery/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:jyoti@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="book-btn" onclick="handleBooking('Jyoti')">Book Session</button>
+      </div>
+      <div class="trainer-card">
+        <img class="trainer-photo" src="https://randomuser.me/api/portraits/men/61.jpg" alt="Trainer Deepak Sharma">
+        <h3>Deepak Sharma</h3>
+        <div class="trainer-role">Mobility & Rehab</div>
+        <div class="trainer-specialties">Specialties: Injury rehab, flexibility, posture correction</div>
+        <div class="trainer-bio">
+          Physiotherapist and ACSM certified. “You’re only as young as your joints feel!”
+        </div>
+        <div class="trainer-socials">
+          <a href="https://www.instagram.com/deepak_pandit.0052/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:deepak@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="book-btn" onclick="handleBooking('Deepak Sharma')">Book Session</button>
+      </div>
+      <div class="trainer-card">
+        <img class="trainer-photo" src="https://randomuser.me/api/portraits/men/76.jpg" alt="Trainer Happy">
+        <h3>Happy</h3>
+        <div class="trainer-role">Nutrition & Weight Loss</div>
+        <div class="trainer-specialties">Specialties: Diet planning, transformation support, group coaching</div>
+        <div class="trainer-bio">
+          10+ years, MSc Nutrition. “Eat smart, move often, smile always!”
+        </div>
+        <div class="trainer-socials">
+          <a href="https://www.instagram.com/happy_soni.__/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:happy@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="book-btn" onclick="handleBooking('Happy')">Book Session</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout. All content for inspiration—ask our trainers for personalized advice!
+  </footer>
+  <script>
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      alert("Searching for: " + query);
+    };
+  </script>
+  <script src="JS/main.js"></script>
+</body>
+
+</html>

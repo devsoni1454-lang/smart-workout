@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout Team - Meet The Minds Behind</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 260px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .team-main-section {
+      max-width: 1070px;
+      margin: 48px auto 48px auto;
+      padding: 0 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team-hero {
+      background: linear-gradient(105deg, #eaf2f4 90%, #fff);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(36, 182, 98, 0.09);
+      min-height: 150px;
+      padding: 34px 7vw 29px 7vw;
+      margin-bottom: 39px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .team-hero-content {
+      flex: 2;
+      min-width: 220px;
+      max-width: 500px;
+    }
+
+    .team-hero-content h1 {
+      color: #29b662;
+      font-size: 2.05em;
+      margin: 0 0 14px 0;
+      line-height: 1.09;
+      font-weight: 800;
+    }
+
+    .team-hero-content p {
+      font-size: 1.15em;
+      color: #393939;
+      margin-bottom: 17px;
+    }
+
+    .team-hero-content .cta-btn {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      font-size: 1.05em;
+      font-weight: 700;
+      padding: 11px 32px;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.11);
+      transition: background .22s;
+      margin-top: 8px;
+    }
+
+    .team-hero-content .cta-btn:hover {
+      background: #222;
+    }
+
+    .team-hero-image {
+      flex: 1;
+      max-width: 170px;
+      min-width: 80px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .team-hero-image img {
+      width: 90%;
+      max-width: 130px;
+      border-radius: 13px;
+      box-shadow: 0 2px 9px rgba(36, 182, 98, 0.09);
+    }
+
+    .team-quote {
+      color: #08724c;
+      font-size: 1.10em;
+      font-style: italic;
+      background: #eaf2f4;
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin: 25px 0 34px 0;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .team-cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 38px;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 13px rgba(44, 173, 117, 0.10);
+      padding: 26px 20px 18px 20px;
+      max-width: 230px;
+      min-width: 180px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .team-photo {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 1px 7px #eaf2f4;
+      margin-bottom: 11px;
+      border: 2.6px solid #29b66233;
+    }
+
+    .team-card h3 {
+      color: #29b662;
+      margin: 0 0 4px 0;
+      font-size: 1.11em;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .team-role {
+      font-size: .97em;
+      color: #238652;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .team-bio {
+      color: #363636;
+      font-size: .98em;
+      margin-bottom: 9px;
+    }
+
+    .team-socials {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 7px;
+    }
+
+    .team-socials a {
+      color: #218a5b;
+      text-decoration: none;
+      font-size: 1.07em;
+      transition: color .15s;
+    }
+
+    .team-socials a:hover {
+      color: #e37d00;
+    }
+
+    .team-card .contact-btn {
+      background: #29b662;
+      color: #fff;
+      padding: 5px 16px;
+      border: none;
+      font-weight: 700;
+      border-radius: 8px;
+      margin-top: 7px;
+      font-size: .97em;
+      cursor: pointer;
+      transition: background .2s;
+      box-shadow: 0 1px 4px #eee;
+    }
+
+    .team-card .contact-btn:hover {
+      background: #222;
+    }
+
+    .team-values {
+      background: #f8faf7;
+      border-radius: 15px;
+      box-shadow: 0 1px 6px rgba(44, 173, 117, 0.05);
+      padding: 23px 23px 12px 23px;
+      margin: 44px 0 18px 0;
+      max-width: 760px;
+      text-align: center;
+      color: #238652;
+    }
+
+    .team-values h2 {
+      font-size: 1.21em;
+      margin: 0 0 15px 0;
+      font-weight: 700;
+      color: #238652;
+    }
+
+    .team-values ul {
+      margin: 0 auto 0 auto;
+      padding-left: 0;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .team-values li {
+      margin-bottom: 9px;
+      color: #393939;
+      font-size: 1.07em;
+    }
+
+    /* Responsive */
+    @media (max-width:1100px) {
+      .team-main-section {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:700px) {
+      .team-hero {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .team-hero-content h1 {
+        font-size: 1.23em;
+      }
+
+      .team-cards-row {
+        gap: 16px;
+      }
+
+      .team-card {
+        min-width: 82vw;
+        max-width: 95vw;
+      }
+
+      .team-values,
+      .team-quote {
+        padding: 11px 3vw;
+      }
+    }
+
+    @media (max-width:530px) {
+      .topnav {
+        flex-direction: column;
+        padding: 9px 2vw;
+      }
+
+      .topnav .logo {
+        margin-bottom: 8px;
+      }
+
+      .team-main-section {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search team, roles, stories..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+
+  <div class="team-main-section">
+
+    <div class="team-quote">
+      “When passion and purpose unite, great things happen. We believe wellness is more than just fitness—it's about
+      community, empowerment, and a touch of fun.”
+    </div>
+    <h1>Student of Poornima University </h1>
+
+    <!-- TEAM MEMBER CARDS -->
+    <div class="team-cards-row">
+      <div class="team-card">
+        <img class="team-photo" src="https://randomuser.me/api/portraits/men/28.jpg" alt="Team Member A">
+        <h3>Dev Soni</h3>
+        <div class="team-role">Founder & Frontend Developer</div>
+        <div class="team-bio">
+          Visionary coder who built Smart Workout platform engine. “Building beautiful interface that feel as good as
+          they look”
+        </div>
+        <div class="team-socials">
+          <a href="https://www.instagram.com/devsoni_27/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:devsoni@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="contact-btn" onclick="handleContact('Dev Soni')">Contact</button>
+      </div>
+      <div class="team-card">
+        <img class="team-photo" src="https://randomuser.me/api/portraits/women/35.jpg" alt="Team Member B">
+        <h3>KUldeep</h3>
+        <div class="team-role">Leader & Backend developer</div>
+        <div class="team-bio">
+          Backend developer with a leader's mindset,building systems that scale and teams that grow.
+        </div>
+        <div class="team-socials">
+          <a href="https://www.instagram.com/kuldeep_b292/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:kuldeep@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="contact-btn" onclick="handleContact('Kuldeep')">Contact</button>
+      </div>
+      <div class="team-card">
+        <img class="team-photo" src="https://randomuser.me/api/portraits/men/51.jpg" alt="Team Member C">
+        <h3>Akash kumar</h3>
+        <div class="team-role">Nutrition & Content Expert</div>
+        <div class="team-bio">
+          writes clear, friendly guides and meal plans.Turning ideas into content that connects and converts.
+        </div>
+        <div class="team-socials">
+          <a href="https://www.instagram.com/being_akaxh/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:akashkumar@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="contact-btn" onclick="handleContact('Akash Kumar')">Contact</button>
+      </div>
+      <div class="team-card">
+        <img class="team-photo" src="https://randomuser.me/api/portraits/women/19.jpg" alt="Team Member D">
+        <h3>Priyanshu</h3>
+        <div class="team-role">Tester & Security Specialist</div>
+        <div class="team-bio">
+          Tests the product,finds bugs,and ensures system security.
+        </div>
+        <div class="team-socials">
+          <a href="https://www.instagram.com/bugalia_priyanshu_/?hl=en" target="_blank" title="Instagram"><b>IG</b></a>
+          <a href="mailto:priyanshu@smartworkout.com" title="Email"><b>✉️</b></a>
+        </div>
+        <button class="contact-btn" onclick="handleContact('Priyanshu')">Contact</button>
+      </div>
+    </div>
+
+    <!-- FitLife Values -->
+    <div class="team-values">
+      <h2>Our Core Values</h2>
+      <ul>
+        <li>People-first: Design for every body, not just athletes.</li>
+        <li>Diversity: All ages, backgrounds & goals are welcome.</li>
+        <li>Science-driven: Evidence over fads, always.</li>
+        <li>Fun & Friendly: Wellness should feel good.</li>
+        <li>Collaborate to grow—together!</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout. Teamwork, energy, and community for your health!
+  </footer>
+  <script>
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      alert("Searching for: " + query);
+    };
+  </script>
+  <script src="JS/main.js"></script>
+</body>
+
+</html>

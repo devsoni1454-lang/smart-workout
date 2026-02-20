@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Payment - Smart Workout</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: #f4f7f6;
+            color: #222;
+        }
+
+        .topnav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            padding: 14px 4vw 14px 4vw;
+            border-bottom: 1.2px solid #eee;
+            position: relative;
+        }
+
+        .topnav .logo {
+            font-size: 1.6em;
+            color: #2e475d;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+
+        .site-logo-img {
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            margin-left: 15px;
+            border-radius: 50%;
+            border: 2px solid #eaf2f4;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .topnav .nav-links {
+            display: flex;
+            gap: 0.8vw;
+            align-items: center;
+        }
+
+        .topnav .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 600;
+            font-size: 1.06em;
+            margin: 0 10px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            transition: background .23s, color .23s;
+        }
+
+        .topnav .actions {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .payment-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            margin: 60px auto;
+        }
+
+        h2 {
+            color: #28a06d;
+            margin-top: 0;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            box-sizing: border-box;
+            /* Fix padding issues */
+        }
+
+        input:focus {
+            border-color: #28a06d;
+            outline: none;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .pay-btn {
+            background: #28a06d;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .pay-btn:hover {
+            background: #1e8558;
+        }
+
+        .secure-icon {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <div class="logo">
+            Smart Workout
+            <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+        </div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/diet.html">Diet</a>
+            <a href="/exercises.html">Exercises</a>
+            <a href="/tracker.html">Tracker</a>
+            <a href="/classes.html">Classes</a>
+            <a href="/trainer.html">Trainers</a>
+            <a href="/guide.html">Guide</a>
+            <a href="/team.html">Team</a>
+            <a href="/about.html">About Us</a>
+        </div>
+        <div class="actions">
+            <!-- Auth buttons injected by main.js -->
+        </div>
+    </div>
+
+    <div class="payment-container">
+        <h2>Secure Payment</h2>
+        <p>Complete your subscription to unlock full access.</p>
+
+        <style>
+            .method-btn {
+                background: #f0f0f0;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                color: #555;
+            }
+
+            .method-btn.active {
+                background: #28a06d;
+                color: #fff;
+            }
+
+            .method-section {
+                display: none;
+                margin-top: 20px;
+                text-align: left;
+            }
+
+            .method-section.active {
+                display: block;
+            }
+
+            .qr-placeholder {
+                background: #eee;
+                height: 200px;
+                width: 200px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #888;
+                border: 2px dashed #ccc;
+            }
+        </style>
+
+        <div class="payment-methods" style="display:flex; gap:10px; justify-content:center; margin-bottom:20px;">
+            <button type="button" class="method-btn active" onclick="selectMethod('card')">Card</button>
+            <button type="button" class="method-btn" onclick="selectMethod('upi')">UPI Apps</button>
+            <button type="button" class="method-btn" onclick="selectMethod('qr')">QR Code</button>
+        </div>
+
+        <form id="paymentForm">
+            <!-- Common Amount - Always Visible if set -->
+            <div class="form-group" id="amountContainer" style="display:none;">
+                <label>Amount to Pay</label>
+                <input type="text" id="amountField" value="₹0" readonly
+                    style="background-color: #f0f0f0; color: #28a06d; font-weight: bold; cursor: not-allowed;">
+            </div>
+
+            <!-- CARD SECTION -->
+            <div id="cardSection" class="method-section active">
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" placeholder="e.g. John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="form-group">
+                    <label>Expiry</label>
+                    <input type="text" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                    <label>CVC</label>
+                    <input type="password" placeholder="123" maxlength="3">
+                </div>
+            </div>
+
+            <!-- UPI SECTION -->
+            <div id="upiSection" class="method-section" style="text-align:center;">
+                <p>Select your preferred app to pay securely:</p>
+                <button type="button"
+                    style="background:#5f259f; color:white; border:none; padding:10px 20px; border-radius:5px; margin:5px; width:100%; cursor:pointer;"
+                    onclick="mockPayment('PhonePe')">PhonePe</button>
+                <button type="button"
+                    style="background:#ea4335; color:white; border:none; padding:10px 20px; border-radius:5px; margin:5px; width:100%; cursor:pointer;"
+                    onclick="mockPayment('Google Pay')">Google Pay</button>
+                <button type="button"
+                    style="background:#00baf2; color:white; border:none; padding:10px 20px; border-radius:5px; margin:5px; width:100%; cursor:pointer;"
+                    onclick="mockPayment('Paytm')">Paytm</button>
+            </div>
+
+            <!-- QR CODE SECTION -->
+            <div id="qrSection" class="method-section" style="text-align:center;">
+                <p>Scan with any UPI App:</p>
+                <div class="qr-placeholder" style="background:none; border:none; height:auto; display:block;">
+                    <span><img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=8278656503@ybl%26pn=DevSoni"
+                            id="qrImage" alt="Payment QR Code"
+                            style="max-width:200px; width:100%; height:auto; border:2px solid #eee; border-radius:10px;" /></span>
+                </div>
+                <p style="font-size:0.9em; color:#888;">Paying to: <strong>8278656503@ybl</strong></p>
+            </div>
+
+            <button type="submit" class="pay-btn" style="margin-top:20px;">Proceed to Pay</button>
+        </form>
+
+        <script>
+            function selectMethod(method) {
+                // Update Buttons
+                document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
+                event.target.classList.add('active');
+
+                // Update Sections
+                document.querySelectorAll('.method-section').forEach(s => s.classList.remove('active'));
+                document.getElementById(method + 'Section').classList.add('active');
+
+                // Update Button Text
+                const btn = document.querySelector('.pay-btn');
+                if (method === 'card') { btn.textContent = "Pay Now"; btn.style.display = 'block'; }
+                if (method === 'upi') { btn.style.display = 'none'; } // Buttons are inside
+                if (method === 'qr') { btn.textContent = "I Have Paid"; btn.style.display = 'block'; }
+            }
+
+            function mockPayment(app) {
+                const amountVal = document.getElementById('amountField').value || "Amount";
+                alert(`Redirecting to ${app} to pay ${amountVal} to 8278656503...`);
+                setTimeout(() => {
+                    alert("Payment Successful! Verification sent to 8278656503.");
+                    window.location.href = "/index.html";
+                }, 1500);
+            }
+        </script>
+
+        <div class="secure-icon">
+            🔒 256-bit SSL Secure Checkout
+        </div>
+        <div style="margin-top:15px;">
+            <a href="/index.html" style="color:#888;text-decoration:none;font-size:0.9em;">Cancel</a>
+        </div>
+    </div>
+
+    <script src="/JS/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const plan = params.get('plan');
+            const booking = params.get('booking');
+            const contact = params.get('contact');
+
+            const titleEl = document.querySelector('h2');
+            const descEl = document.querySelector('p');
+
+            let amount = "0";
+
+            if (plan) {
+                const planLower = plan.toLowerCase();
+                if (planLower.includes('monthly')) amount = "299";
+                if (planLower.includes('yearly')) amount = "2999";
+
+                titleEl.textContent = `Subscribe to ${plan} Plan`;
+                descEl.textContent = "Unlock full access to diets, exercises, and tracking.";
+            } else if (booking) {
+                amount = "150";
+                titleEl.textContent = `Book Session with ${booking}`;
+                descEl.textContent = "Secure your spot for a personalized training session.";
+            } else if (contact) {
+                amount = "50";
+                titleEl.textContent = `Connect with ${contact}`;
+                // Explicitly show the contact number here
+                descEl.innerHTML = `<strong>Contact Number: 8278656503</strong><br>Proceed with payment to finalize your consultation request.`;
+            }
+
+            // Update Field
+            const amountField = document.getElementById('amountField');
+            const amountContainer = document.getElementById('amountContainer');
+
+            if (amountField && amount !== "0") {
+                amountField.value = "₹" + amount;
+                if (amountContainer) amountContainer.style.display = 'block';
+
+                // GENERATE DYNAMIC QR CODE WITH AMOUNT
+                // Only add amount if it's a valid number
+                let deepLink = `upi://pay?pa=8278656503@ybl&pn=DevSoni&tn=Payment`;
+                if (amount && amount !== "0") {
+                    deepLink += `&am=${amount}`;
+                }
+
+                const qrImg = document.getElementById('qrImage');
+                // Use the API URL directly
+                if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(deepLink)}`;
+            }
+        });
+
+
+        document.getElementById('paymentForm').onsubmit = function (e) {
+            e.preventDefault();
+            const btn = document.querySelector('.pay-btn');
+            btn.innerHTML = "Processing...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert("Payment Successful! Welcome to Smart Workout Premium.");
+                window.location.href = "/index.html";
+            }, 2000);
+        };
+    </script>
+</body>
+
+</html>

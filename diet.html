@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://img.freepik.com/premium-photo/portfolio-diet-balanced-vegan-food-background_136595-26463.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 280px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .page-main-section {
+      max-width: 1240px;
+      margin: 42px auto 0 auto;
+      padding: 0 4vw;
+      display: flex;
+      gap: 38px;
+      align-items: flex-start;
+    }
+
+    .main-content {
+      flex: 3;
+    }
+
+    .main-content h1 {
+      color: #29b662;
+      font-size: 2em;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .main-content p.intro {
+      color: #444;
+      font-size: 1.26em;
+      margin-bottom: 18px;
+    }
+
+    .diet-hero-image {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      margin-bottom: 17px;
+      box-shadow: 0 2px 14px #6cf1b475;
+    }
+
+    .diet-sections-list {
+      margin: 32px 0 7px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+      gap: 28px 24px;
+    }
+
+    .diet-section-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 9px rgba(44, 173, 117, 0.09);
+      padding: 28px 20px 17px 22px;
+      transition: box-shadow .2s;
+      min-height: 188px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .diet-section-card h3 {
+      color: #29b662;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.23em;
+      font-weight: 700;
+    }
+
+    .diet-section-card ul {
+      margin: 0 0 0 18px;
+      color: #222;
+      font-size: 1.07em;
+      padding: 0;
+    }
+
+    .diet-section-card li {
+      margin-bottom: 7px;
+    }
+
+    .diet-section-card span {
+      display: block;
+      color: #08724c;
+      font-size: .94em;
+      margin-top: 11px;
+    }
+
+    .diet-section-card a {
+      margin-top: 9px;
+      color: #228a4b;
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: .98em;
+      transition: color .19s;
+    }
+
+    .diet-section-card a:hover {
+      color: #29b662;
+    }
+
+    .sidebar-trending {
+      flex: 1;
+      max-width: 290px;
+      min-width: 210px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(36, 182, 98, 0.08);
+      padding: 24px 18px 13px 18px;
+      margin-bottom: 22px;
+    }
+
+    .sidebar-trending h3 {
+      color: #29b662;
+      margin: 0 0 12px 0;
+      font-size: 1.22em;
+      letter-spacing: .07em;
+    }
+
+    .sidebar-trending ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-top: 3px;
+      color: #222;
+      font-size: 1.06em;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .sidebar-trending li {
+      margin-bottom: 11px;
+    }
+
+    .sidebar-trending .tip {
+      margin-top: 19px;
+      font-size: 0.98em;
+      color: #097555;
+      background: #eaf2f4;
+      padding: 11px 13px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      background: #222;
+      margin-top: 52px;
+      padding: 33px 0 18px 0;
+      font-size: 1.1em;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width: 1000px) {
+      .page-main-section {
+        flex-direction: column;
+      }
+
+      .sidebar-trending {
+        max-width: 770px;
+        margin: 38px auto 0 auto;
+      }
+
+      .main-content {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:700px) {
+      .diet-sections-list {
+        grid-template-columns: 1fr;
+      }
+
+      .page-main-section {
+        gap: 22px;
+      }
+
+      .diet-hero-image {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:520px) {
+      .topnav {
+        flex-direction: column;
+        padding: 9px 2vw;
+      }
+
+      .topnav .logo {
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+  <script src="/JS/main.js"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search diets, meal plans, guides..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+  <div class="page-main-section">
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <h1>Diet & Nutrition</h1>
+      <p class="intro">
+        Achieve your health and fitness goals with expert-backed diet tips, balanced meal plans, and actionable
+        nutrition advice. We believe nourishing your body should be simple, satisfying, and sustainable—no matter your
+        starting point.
+      </p>
+      <img class="diet-hero-image"
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+        alt="Healthy Food Table" />
+      <div class="diet-sections-list">
+        <!-- Add inside your main content where you want the daily diet plan to appear -->
+        <section id="dailyDietPlanSection" style="margin:38px 0;">
+          <h2 style="color:#29b662;text-align:left;margin-bottom:12px;font-size:1.28em;">🥗 Today's Diet Plan</h2>
+          <div class="daily-diet-card" id="dailyDietCard"></div>
+          <button id="refreshDietBtn"
+            style="margin-top:14px;padding:8px 22px;font-size:1em;background:#29b662;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">🔄
+            Refresh Diet Plan</button>
+        </section>
+        <style>
+          .daily-diet-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 2px 14px rgba(44, 173, 117, 0.08);
+            padding: 28px 24px 16px 24px;
+            margin-bottom: 17px;
+            max-width: 540px;
+            font-size: 1.11em;
+          }
+
+          .daily-diet-card ul {
+            margin: 8px 0 0 22px;
+          }
+
+          .daily-diet-card li {
+            margin-bottom: 7px;
+          }
+
+          #refreshDietBtn:hover {
+            background: #228a4b;
+          }
+        </style>
+        <script>
+          // 1. Static Data (Fallback) - Ordered Monday to Sunday
+          const staticDiets = [
+            {
+              day: "Monday's Plan",
+              breakfast: "Veg Poha + Greek yogurt + A fruit",
+              lunch: "Brown rice + Dal + Stir-fried veggies + Salad",
+              snack: "Handful of nuts/seeds + Herbal tea",
+              dinner: "Chapati + Paneer sabzi + Cucumber raita"
+            },
+            {
+              day: "Tuesday's Plan",
+              breakfast: "Oats porridge with chia seeds and fresh fruit",
+              lunch: "Quinoa pulao with mixed veggies + Curd",
+              snack: "Makhana (foxnuts) + Buttermilk",
+              dinner: "Moong dal cheela + Mint chutney + Carrot salad"
+            },
+            {
+              day: "Wednesday's Plan",
+              breakfast: "Multigrain toast + Peanut butter + Banana",
+              lunch: "Rajma-chawal + Veg salad",
+              snack: "Fruit + Low-fat cheese cube",
+              dinner: "Dalia khichdi + Mixed veg curry"
+            },
+            {
+              day: "Thursday's Plan",
+              breakfast: "Sprouts chaat + Lemon water",
+              lunch: "Roti + Chole + Onion-tomato salad",
+              snack: "Roasted chickpeas + Green tea",
+              dinner: "Grilled tofu/Chicken + Steamed veggies"
+            },
+            {
+              day: "Friday's Plan",
+              breakfast: "Idli sambar + Fruit",
+              lunch: "Millet khichdi + Curd + Veg salad",
+              snack: "Bhel with veggies + Lemon water",
+              dinner: "Brown rice + Mix veg curry"
+            },
+            {
+              day: "Saturday's Plan",
+              breakfast: "Egg omelette (or Besan cheela) + Toast + Fruit",
+              lunch: "Roti + Lauki sabzi + Dal + Salad",
+              snack: "Yogurt + Seeds sprinkle",
+              dinner: "Paneer tikka + Vegetable soup"
+            },
+            {
+              day: "Sunday's Plan",
+              breakfast: "Stuffed paratha (Veg) + Curd",
+              lunch: "Jeera rice + Dal tadka + Salad",
+              snack: "Fruit chaat",
+              dinner: "Vegetable pasta (whole wheat) + Grilled veggies"
+            }
+          ];
+
+          // 2. Global State
+          let allDietPlans = [...staticDiets];
+          let lastDietIndex = -1;
+          const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : '/api';
+
+          // 3. Helper Functions
+
+          // Helper to extract meal string from Backend Data Model
+          function getMealStr(plan, type) {
+            if (!plan.meals || !Array.isArray(plan.meals)) return null;
+            // Match 'breakfast', 'lunch' etc. in the 'time' property
+            const found = plan.meals.find(m => m.time && m.time.toLowerCase().includes(type.toLowerCase()));
+            return found && found.items ? found.items.join(', ') : null;
+          }
+
+          // Display a plan by index
+          function showDiet(idx) {
+            // Bounds check
+            if (idx < 0 || idx >= allDietPlans.length) idx = 0;
+            lastDietIndex = idx;
+            const plan = allDietPlans[idx];
+
+            // Normalize Data: Check if it's backend format or static format
+            const name = plan.name || plan.day || "Daily Diet Plan";
+            const typeInfo = plan.type ? `<span style="font-size:0.6em;color:#666">(${plan.type})</span>` : '';
+
+            // Try direct property (static) OR getMealStr helper (backend)
+            const breakfast = plan.breakfast || getMealStr(plan, 'breakfast') || "Oats + Fruit";
+            const lunch = plan.lunch || getMealStr(plan, 'lunch') || "Rice + Dal + Salad";
+            const snack = plan.snack || getMealStr(plan, 'snack') || "Nuts + Tea";
+            const dinner = plan.dinner || getMealStr(plan, 'dinner') || "Soup + Veggies";
+
+            const container = document.getElementById('dailyDietCard');
+            if (container) {
+              container.innerHTML = `
+                <h3 style="color:#29b662; margin-top:0;">
+                    ${name} ${typeInfo}
+                </h3>
+                <ul>
+                  <li><b>Breakfast:</b> ${breakfast}</li>
+                  <li><b>Lunch:</b> ${lunch}</li>
+                  <li><b>Snack:</b> ${snack}</li>
+                  <li><b>Dinner:</b> ${dinner}</li>
+                </ul>
+              `;
+            }
+          }
+
+          // Refresh with a Random Plan
+          function refreshDietPlan() {
+            if (allDietPlans.length <= 1) return;
+            let newIdx;
+            // Try to pick a new random index that isn't the current one
+            let attempts = 0;
+            do {
+              newIdx = Math.floor(Math.random() * allDietPlans.length);
+              attempts++;
+            } while (newIdx === lastDietIndex && attempts < 10);
+
+            showDiet(newIdx);
+          }
+
+          // Fetch from API and merge
+          async function fetchDietPlans() {
+            try {
+              const res = await fetch(`${API_URL}/diet`);
+              if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data) && data.length > 0) {
+                  // If backend has plans, append them or replace?
+                  // Providing valid backend plans usually overrides static ones in importance.
+                  // But to ensure we have enough for a "week", let's mix or just use them if enough.
+                  // For now, let's Append to give huge variety:
+                  allDietPlans = [...staticDiets, ...data];
+                  console.log(`Loaded ${data.length} plans from API. Total: ${allDietPlans.length}`);
+                }
+              }
+            } catch (error) {
+              console.warn("Diet API unavailable, using static plans only.");
+            }
+          }
+
+          // 4. Initialization
+          window.addEventListener('DOMContentLoaded', () => {
+            // 1. Show today's plan immediately (Static)
+            const today = new Date().getDay(); // 0=Sun, 1=Mon...
+            // Map to 0=Mon, 6=Sun to match our static array
+            const todayIdx = (today === 0) ? 6 : (today - 1);
+            showDiet(todayIdx);
+
+            // 2. Attach Event Listener
+            const btn = document.getElementById('refreshDietBtn');
+            if (btn) btn.onclick = refreshDietPlan;
+
+            // 3. Fetch specific plans asynchronously
+            fetchDietPlans();
+          });
+        </script>
+
+        <div class="diet-section-card">
+          <h3>Balanced Diet Essentials</h3>
+          <ul>
+            <li>Include fresh fruits and vegetables daily</li>
+            <li>Choose whole grains (brown rice, oats, millet)</li>
+            <li>Incorporate lean proteins: pulses, eggs, chicken, tofu</li>
+            <li>Don’t skip healthy fats: nuts, seeds, olive oil</li>
+          </ul>
+          <span>Tip: The more colorful your plate, the more nutrients you get!</span>
+        </div>
+
+        <div class="diet-section-card">
+          <h3>Sample Meal Plan</h3>
+          <ul>
+            <li><b>Breakfast:</b> Oats with fruit, seeds & nuts</li>
+            <li><b>Lunch:</b> Brown rice, dal, seasonal veggies, salad</li>
+            <li><b>Snack:</b> Fruit/Greek yogurt/nuts</li>
+            <li><b>Dinner:</b> Quinoa-vegetable stir fry, lean protein</li>
+          </ul>
+          <a href="#" onclick="alert('Plans for weight loss, gain, and muscle building coming soon!')">Get custom diet
+            plans</a>
+        </div>
+
+        <div class="diet-section-card">
+          <h3>Hydration</h3>
+          <ul>
+            <li>Target: 8+ glasses of water per day</li>
+            <li>Infuse water with lemon, mint or cucumber for taste</li>
+            <li>Limit sugary drinks and sodas</li>
+          </ul>
+          <span>Staying hydrated boosts energy, digestion & recovery.</span>
+        </div>
+
+        <div class="diet-section-card">
+          <h3>Pre-Workout Meals</h3>
+          <ul>
+            <li>Carbs + protein 30–60min before activity</li>
+            <li>Examples: Banana & peanut butter; Oats with milk</li>
+          </ul>
+          <a href="#" onclick="alert('Custom workout meal plans coming soon!')">See more ideas</a>
+        </div>
+
+        <div class="diet-section-card">
+          <h3>Post-Workout Meals</h3>
+          <ul>
+            <li>Protein + some carbs within 2 hours of exercise</li>
+            <li>Examples: Eggs on toast, dal & rice, paneer wrap</li>
+            <li>Helps rebuild & recover muscle</li>
+          </ul>
+        </div>
+
+        <div class="diet-section-card">
+          <h3>Quick Tips</h3>
+          <ul>
+            <li>Eat mindfully—chew slowly</li>
+            <li>Avoid processed sweets/junk foods as much as possible</li>
+            <li>Plan snacks to avoid overeating</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <!-- SIDEBAR -->
+    <aside class="sidebar-trending">
+      <h3>Trending in Diet</h3>
+      <ul>
+        <li>7-Day Healthy Eating Challenge</li>
+        <li>Top Indian Protein Sources</li>
+        <li>Intermittent Fasting: Safe Approach?</li>
+        <li>Meal Prep Made Easy</li>
+      </ul>
+      <div class="tip">
+        💡 <b>Did you know?</b><br>
+        Most weight loss success comes from 80% diet, 20% exercise.
+      </div>
+    </aside>
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout.<br>
+    Crafted with 🌱 for your healthy journey.
+  </footer>
+  <script src="JS/main.js"></script>
+  <script>
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      alert("Searching for: " + query);
+    };
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout - Live & On-Demand Fitness</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 280px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .class-main-section {
+      max-width: 1050px;
+      margin: 46px auto 46px auto;
+      padding: 0 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .classes-hero {
+      background: linear-gradient(105deg, #eaf2f4 90%, #fff);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(36, 182, 98, 0.09);
+      min-height: 160px;
+      padding: 34px 7vw 29px 7vw;
+      margin-bottom: 37px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .classes-hero-content {
+      flex: 2;
+      min-width: 220px;
+      max-width: 500px;
+    }
+
+    .classes-hero-content h1 {
+      color: #29b662;
+      font-size: 2.2em;
+      margin: 0 0 14px 0;
+      line-height: 1.09;
+      font-weight: 800;
+    }
+
+    .classes-hero-content p {
+      font-size: 1.13em;
+      color: #393939;
+      margin-bottom: 17px;
+    }
+
+    .classes-hero-content .cta-btn {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      font-size: 1.09em;
+      font-weight: 700;
+      padding: 11px 32px;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.11);
+      transition: background .22s;
+    }
+
+    .classes-hero-content .cta-btn:hover {
+      background: #222;
+    }
+
+    .classes-hero-image {
+      flex: 1;
+      max-width: 220px;
+      min-width: 90px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .classes-hero-image img {
+      width: 92%;
+      max-width: 195px;
+      border-radius: 13px;
+      box-shadow: 0 2px 9px rgba(36, 182, 98, 0.08);
+    }
+
+    .calendar-section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 13px rgba(44, 173, 117, 0.11);
+      padding: 23px 20px 31px 20px;
+      margin-bottom: 28px;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .calendar-section h2 {
+      color: #29b662;
+      text-align: center;
+      margin-bottom: 13px;
+      margin-top: 0;
+    }
+
+    .class-calendar-table {
+      width: 100%;
+      margin-bottom: 6px;
+      border-collapse: collapse;
+      font-size: 1.1em;
+    }
+
+    .class-calendar-table th,
+    .class-calendar-table td {
+      padding: 10px 6px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .class-calendar-table th {
+      color: #fff;
+      font-weight: 700;
+      background: #29b662;
+      border-bottom: 2px solid #238652;
+    }
+
+    .class-calendar-table td {
+      background: #f6f7fc;
+      color: #444;
+      border-bottom: 1px solid #e4efea;
+    }
+
+    .class-calendar-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .class-row-highlight {
+      background: #e9fdf1 !important;
+      font-weight: 700;
+      color: #238652 !important;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.12);
+    }
+
+    .join-btn {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 7px 18px;
+      font-size: .99em;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 5px;
+      margin-top: 2px;
+      transition: background .2s;
+      box-shadow: 0 1px 5px #eef8f1;
+    }
+
+    .join-btn:hover {
+      background: #222;
+    }
+
+    .types-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 38px;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .class-type-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 9px rgba(44, 173, 117, 0.10);
+      padding: 26px 23px 24px 23px;
+      max-width: 280px;
+      min-width: 180px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .class-type-card h3 {
+      color: #29b662;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.18em;
+      font-weight: 700;
+    }
+
+    .class-type-card p {
+      color: #222;
+      margin: 0 0 12px 0;
+      font-size: 1em;
+    }
+
+    .class-type-card img {
+      width: 95%;
+      max-width: 120px;
+      border-radius: 11px;
+      margin-bottom: 9px;
+      box-shadow: 0 1px 6px #c8ecd5;
+    }
+
+    .on-demand-section {
+      background: #f8faf7;
+      border-radius: 15px;
+      box-shadow: 0 1px 6px rgba(44, 173, 117, 0.05);
+      padding: 30px 22px 16px 22px;
+      margin: 42px 0 12px 0;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .on-demand-grid {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .on-demand-video {
+      width: 240px;
+      background: #fff;
+      border-radius: 11px;
+      box-shadow: 0 1px 8px #eaf2f4;
+      padding: 13px 12px 9px 12px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .on-demand-video iframe {
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 16/9;
+      margin-bottom: 8px;
+      background: #0001;
+    }
+
+    .on-demand-video h4 {
+      font-size: 1.05em;
+      color: #238652;
+      margin: 4px 0 0 0;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width:1100px) {
+      .class-main-section {
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:700px) {
+      .classes-hero {
+        flex-direction: column;
+        padding: 20px 2vw 14px 2vw;
+      }
+
+      .calendar-section,
+      .on-demand-section {
+        padding: 12px 2vw;
+      }
+
+      .types-section {
+        gap: 12px;
+      }
+
+      .on-demand-video {
+        width: 99vw;
+        max-width: 99vw;
+      }
+    }
+
+    @media (max-width:530px) {
+      .topnav {
+        flex-direction: column;
+        padding: 9px 2vw;
+      }
+
+      .topnav .logo {
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+  <script src="/JS/main.js"></script>
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search classes, trainers, live sessions..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+
+  <div class="class-main-section">
+
+    <!-- Hero -->
+    <div class="classes-hero">
+      <div class="classes-hero-content">
+        <h1>Live &amp; On-Demand Fitness Classes</h1>
+        <p>
+          Join real-time sessions with expert trainers or sweat it out anytime with on-demand video classes.
+          <br> Yoga, Cardio, Strength, HIIT, and more—Smart Workout brings the gym to your home.
+        </p>
+        <button class="cta-btn" onclick="window.scrollTo({ top: 620, behavior: 'smooth' })">See Class Schedule</button>
+      </div>
+      <div class="classes-hero-image">
+        <img src="https://ravefitnessstudio.com/wp-content/uploads/2022/07/Online-Fitness-Training-1.jpg"
+          alt="Fitness Class" />
+      </div>
+    </div>
+
+    <!-- Weekly Class Calendar -->
+    <section class="calendar-section">
+      <h2>Weekly Class Schedule</h2>
+      <table class="class-calendar-table">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Trainer</th>
+            <th>Join</th>
+          </tr>
+        </thead>
+        <tbody id="classesCalendarBody">
+          <!-- Will be filled by JS -->
+        </tbody>
+      </table>
+      <div style="font-size:.99em;color:#08724c; margin-top:3px;">
+        *All times are in your local timezone.
+      </div>
+    </section>
+
+    <!-- Class Types -->
+    <section class="types-section">
+      <div class="class-type-card">
+        <img
+          src="https://www.poojn.in/wp-content/uploads/2025/05/Yoga-Philosophy-History-Evolution-and-Core-Principles.jpeg.jpg"
+          alt="Yoga">
+        <h3>Yoga & Mindfulness</h3>
+        <p>Relieve stress, gain flexibility and boost balance with guided yoga and meditation flows for all levels.</p>
+      </div>
+      <div class="class-type-card">
+        <img
+          src="https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/fff30ce6-b0e1-46d6-9ade-cc8feb711c05/should-you-do-cardio-before-or-after-weight-training.jpg"
+          alt="HIIT">
+        <h3>HIIT & Cardio</h3>
+        <p>High energy, fat-burn classes to improve endurance and torch calories—no equipment required!</p>
+      </div>
+      <div class="class-type-card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ28DacIOAN54xXOAgJsk2dJ5-QaYHNZwFDxV2r1Qc7A6DPHAVS-fN0r_Nzod7jJBDtzM&usqp=CAU"
+          alt="Strength">
+        <h3>Strength Training</h3>
+        <p>Build power and muscle with bodyweight or dumbbell workouts. Form-focused sessions for safe gains.</p>
+      </div>
+      <div class="class-type-card">
+        <img
+          src="https://png.pngtree.com/thumb_back/fh260/background/20220503/pngtree-dancing-zumba-at-fitness-training-in-a-dance-studio-photo-image_36318566.jpg"
+          alt="Zumba & Dance">
+        <h3>Dance & Zumba</h3>
+        <p>Shake, groove and sweat to fun beats. Great for stress relief, cardio and full-body fun!</p>
+      </div>
+    </section>
+
+    <!-- On-Demand Video Classes -->
+    <section class="on-demand-section">
+      <h2 style="color:#29b662;text-align:center;margin:0 0 15px 0;">On-Demand Class Videos</h2>
+      <div class="on-demand-grid">
+        <div class="on-demand-video">
+          <iframe width="656" height="150" src="https://www.youtube.com/embed/ZNQoQXU_CN4"
+            title="12 Yoga Asanas That You Should Exercise Daily | Swami Ramdev" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <h4>Yoga (20 min)</h4>
+        </div>
+        <div class="on-demand-video">
+          <iframe src="https://www.youtube.com/embed/ml6cT4AZdqI" allowfullscreen loading="lazy"
+            title="20min HIIT"></iframe>
+          <h4>HIIT Fat Burn (20 min)</h4>
+        </div>
+        <div class="on-demand-video">
+          <iframe src="https://www.youtube.com/embed/UoC_O3HzsH0" allowfullscreen loading="lazy"
+            title="Upper Body"></iframe>
+          <h4>Upper Body Strength (25 min)</h4>
+        </div>
+        <div class="on-demand-video">
+          <iframe width="656" height="150" src="https://www.youtube.com/embed/v8UUO1fWreI"
+            title="Powerlifting Training Program Of Squats For Beginners | Leg Workout | Mukesh Gahlot #youtubevideo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <h4>Power Lifting </h4>
+        </div>
+      </div>
+      <div style="color:#097555;font-size:.97em;margin-top:11px;text-align:center;">
+        New on-demand classes are added weekly. All classes available to subscribers.<br>
+        <a href="#" style="color:#29b662;text-decoration:underline" onclick="alert('Log in to unlock all videos!')">See
+          all videos</a>
+      </div>
+    </section>
+
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout.<br>
+    Ready for your best class ever? Join us today!
+  </footer>
+  <script src="JS/main.js"></script>
+  <script>
+    // Search Bar Logic
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      alert("Searching for: " + query);
+    };
+
+    // WEEKLY CLASS CALENDAR (Back-end)
+     const classDays = [
+      {day:"Monday", time:"6:30am", class:"Morning Yoga", trainer:"harshika", link:"https://zoom.us/"},
+      {day:"Monday", time:"5:30pm", class:"Chest & Triceps", trainer:"Deepak", link:"https://zoom.us/"},
+      {day:"Tuesday", time:"6:30am", class:"Cardio", trainer:"Jyoti", link:"https://zoom.us/"},
+      {day:"Tuesday", time:"5:00pm", class:"Back & Biceps", trainer:"Dev soni", link:"https://zoom.us/"},
+      {day:"Wednesday", time:"6:00am", class:"Running", trainer:"Priya ", link:"https://zoom.us/"},
+      {day:"Wednesday", time:"5:30pm", class:"Leg & Shoulders", trainer:"Deepak", link:"https://zoom.us/"},
+      {day:"Thursday", time:"5:30am", class:"Mobility & Core", trainer:"Harshika", link:"https://zoom.us/"},
+      {day:"Thursday", time:"5:15pm", class:"Chest & Abs", trainer:"Happy", link:"https://zoom.us/"},
+      {day:"Friday", time:"5:45am", class:"Yoga", trainer:"Babita", link:"https://zoom.us/"},
+      {day:"Friday", time:"5:30pm", class:"Biceps & Triceps", trainer:"Dev soni", link:"https://zoom.us/"},
+      {day:"Saturday", time:"6:00am", class:"Weekend Blast", trainer:"Multiple", link:"https://zoom.us/"},
+      {day:"Saturday", time:"5:30pm", class:"Back & Shoulders", trainer:"Happy", link:"https://zoom.us/"},
+      {day:"Sunday", time:"7:00am", class:"Cardio", trainer:"Jyoti", link:"https://zoom.us/"},
+    ];
+   const tBody = document.getElementById('classesCalendarBody');
+    const today = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][new Date().getDay()];
+    function calendarRow(d){
+      const highlight = d.day === today ? 'class="class-row-highlight"' : '';
+      return `<tr ${highlight}>
+        <td>${d.day}</td>
+        <td>${d.time}</td>
+        <td>${d.class}</td>
+        <td>${d.trainer}</td>
+        <td>
+          <a class="join-btn" href="${d.link}" target="_blank" title="Opens in Zoom">Join</a>
+        </td>
+      </tr>`;
+    }
+    tBody.innerHTML = classDays.map(calendarRow).join('');
+  </script>
+</body>
+
+</html>

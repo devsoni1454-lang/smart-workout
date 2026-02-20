@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 14px 4vw 14px 4vw;
+      border-bottom: 1.2px solid #eee;
+      position: relative;
+    }
+
+    .topnav .logo {
+      font-size: 1.6em;
+      color: #2e475d;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      margin-left: 15px;
+      border-radius: 50%;
+      border: 2px solid #eaf2f4;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .topnav .nav-links {
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+    }
+
+    .topnav .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.06em;
+      margin: 0 10px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .nav-links a:hover,
+    .topnav .nav-links a.active {
+      background: #eaf2f4;
+      color: #29b662;
+    }
+
+    .topnav .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .topnav .actions button {
+      font-family: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: #29b662;
+      padding: 7px 20px;
+      border: none;
+      border-radius: 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(36, 182, 98, 0.06);
+      margin-left: 7px;
+      transition: background .23s, color .23s;
+    }
+
+    .topnav .actions button.login-btn {
+      background: #eaf2f4;
+      color: #29b662;
+      border: 1.2px solid #29b662;
+    }
+
+    .topnav .actions button.login-btn:hover {
+      background: #29b662;
+      color: #fff;
+    }
+
+    .topnav .actions button.register-btn:hover {
+      background: #222;
+      color: #fff;
+    }
+
+    .search-bar-header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f7fc;
+      padding: 22px 0 2px 0;
+    }
+
+    .search-bar-header form {
+      display: flex;
+      gap: 0;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.07);
+    }
+
+    .search-bar-header input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 1.09em;
+      border-radius: 22px 0 0 22px;
+      width: 260px;
+      background: #fff;
+    }
+
+    .search-bar-header button {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 0 22px 22px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background .21s;
+    }
+
+    .search-bar-header button:hover {
+      background: #228a4b;
+    }
+
+    .wrap-main-section {
+      max-width: 1170px;
+      margin: 48px auto 38px auto;
+      padding: 0 4vw;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .maincol {
+      flex: 3;
+      min-width: 320px;
+      max-width: 740px;
+    }
+
+    .sidecol {
+      flex: 1;
+      min-width: 240px;
+      max-width: 340px;
+    }
+
+    .tracker-hero {
+      background: linear-gradient(105deg, #eaf2f4 87%, #fff);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(36, 182, 98, 0.09);
+      min-height: 160px;
+      padding: 34px 6vw 29px 4vw;
+      margin-bottom: 29px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .tracker-hero-content {
+      flex: 2;
+      min-width: 258px;
+    }
+
+    .tracker-hero-content h1 {
+      color: #29b662;
+      font-size: 2.06em;
+      margin: 0 0 15px 0;
+      line-height: 1.11;
+      font-weight: 800;
+    }
+
+    .tracker-hero-content p {
+      font-size: 1.13em;
+      color: #393939;
+      margin-bottom: 15px;
+      padding-right: 38px;
+      max-width: 530px;
+    }
+
+    .tracker-hero-content .cta-btn {
+      background: #29b662;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      font-size: 1.09em;
+      font-weight: 700;
+      padding: 11px 32px;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.11);
+      transition: background .22s;
+    }
+
+    .tracker-hero-content .cta-btn:hover {
+      background: #222;
+    }
+
+    .tracker-hero-image {
+      flex: 1;
+      max-width: 250px;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .tracker-hero-image img {
+      width: 95%;
+      max-width: 190px;
+      border-radius: 13px;
+      box-shadow: 0 2px 9px rgba(36, 182, 98, 0.08);
+    }
+
+    /* Tracker Cards */
+    .tracker-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      justify-content: center;
+    }
+
+    .track-card {
+      background: #fff;
+      border-radius: 17px;
+      box-shadow: 0 3px 18px rgba(36, 182, 98, 0.09);
+      padding: 33px 29px 19px 29px;
+      width: 340px;
+      margin-bottom: 33px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .track-card h3 {
+      margin: 0 0 14px 0;
+      color: #29b662;
+      font-size: 1.17em;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .preview-image {
+      max-width: 92%;
+      margin: 18px 0 8px 0;
+      border-radius: 9px;
+      border: 1.5px solid #eaf2f4;
+      background: #f7faf7;
+      box-shadow: 0 1px 7px #eaf2f4;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 12px;
+      display: block;
+    }
+
+    input[type="file"] {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 7px;
+      border: 1px solid #ccc;
+      margin-bottom: 12px;
+      font-size: 1em;
+      background: #f8f8fa;
+    }
+
+    button {
+      background: #29b662;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 24px;
+      font-size: 1.07em;
+      margin-top: 6px;
+      cursor: pointer;
+      transition: background .22s;
+    }
+
+    button:hover {
+      background: #222;
+    }
+
+    .est-result {
+      color: #218a5b;
+      font-weight: 600;
+      margin-top: 12px;
+      font-size: 1.08em;
+      min-height: 20px;
+      text-align: center;
+    }
+
+    /* Record Table */
+    .record-table-holder {
+      background: #fff;
+      border-radius: 13px;
+      box-shadow: 0 2px 11px rgba(44, 173, 117, 0.09);
+      padding: 15px 16px 11px 16px;
+      margin: 37px 0 0 0;
+      overflow-x: auto;
+    }
+
+    table.tracker-records {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 340px;
+      margin: 0 auto;
+    }
+
+    .tracker-records th,
+    .tracker-records td {
+      padding: 7px 10px;
+      text-align: center;
+    }
+
+    .tracker-records th {
+      background: #29b662;
+      color: #fff;
+      font-weight: 700;
+      border-bottom: 2px solid #28a06d;
+    }
+
+    .tracker-records tr:nth-child(even) {
+      background: #f1f8f3;
+    }
+
+    .tracker-records td {
+      font-size: 1em;
+    }
+
+    .delete-btn {
+      background: #fff;
+      color: #e34747;
+      font-size: .97em;
+      border: 1px solid #e1dbdb;
+      border-radius: 6px;
+      padding: 4px 12px;
+      margin: 0;
+      cursor: pointer;
+      transition: color .19s, background .15s;
+    }
+
+    .delete-btn:hover {
+      background: #ffdede;
+      color: #d10000;
+      border: 1px solid #ffcccc;
+    }
+
+    /* Sidebar section */
+    .sidebar-section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(36, 182, 98, 0.08);
+      padding: 25px 18px 17px 18px;
+      margin-bottom: 27px;
+    }
+
+    .sidebar-section h3 {
+      color: #29b662;
+      margin: 0 0 13px 0;
+      font-size: 1.17em;
+      letter-spacing: .06em;
+    }
+
+    .sidebar-section ul {
+      list-style: disc;
+      margin-left: 20px;
+      color: #222;
+      font-size: 1em;
+      margin-bottom: 2px;
+      padding-bottom: 0;
+    }
+
+    .sidebar-section li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-section .tip,
+    .sidebar-section .motivation {
+      margin-top: 13px;
+      font-size: 0.99em;
+      color: #0d7559;
+      background: #eaf2f4;
+      padding: 10px 13px;
+      border-radius: 11px;
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      background: #222;
+      margin-top: 52px;
+      padding: 33px 0 18px 0;
+      font-size: 1.1em;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width:1140px) {
+      .wrap-main-section {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .maincol,
+      .sidecol {
+        min-width: 99vw;
+        max-width: 99vw;
+      }
+
+      .tracker-hero {
+        padding: 19px 3vw 11px 3vw;
+      }
+    }
+
+    @media (max-width:650px) {
+      .tracker-cards {
+        gap: 17px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .track-card {
+        width: 96vw;
+        max-width: 97vw;
+      }
+
+      .record-table-holder {
+        padding: 8px 2vw;
+      }
+    }
+  </style>
+  <script src="/JS/main.js"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="topnav">
+    <div class="logo">
+      Smart Workout
+      <img class="site-logo-img" src="/image.jpeg" alt="Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </div>
+    <div class="actions">
+      <button class="login-btn" onclick="alert('Login coming soon!')">Login</button>
+      <button class="register-btn" onclick="alert('Register coming soon!')">Register</button>
+    </div>
+  </div>
+  <div class="search-bar-header">
+    <form id="siteSearchForm">
+      <input type="text" id="siteSearchInput" placeholder="Search your records, calories, progress..." />
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+
+  <div class="wrap-main-section">
+    <!-- Main Content -->
+    <div class="maincol">
+      <!-- Hero Section -->
+      <div class="tracker-hero">
+        <div class="tracker-hero-content">
+          <h1>Track Your Calories &amp; Progress Like a Pro</h1>
+          <p>
+            Upload your meals, log your exercises, and see your calorie balance instantly.
+            FitLife's Tracker covers everything you need for smart, healthy results — all in one professional dashboard.
+          </p>
+          <button class="cta-btn" onclick="window.scrollTo({ top: 410, behavior: 'smooth' })">Start Tracking
+            Now</button>
+        </div>
+        <div class="tracker-hero-image">
+          <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=400&q=80"
+            alt="Tracker dashboard" />
+        </div>
+      </div>
+
+      <!-- Tracker Cards (Upload and Exercise Burn) -->
+      <div class="tracker-cards">
+        <!-- Upload Food Image Section -->
+        <div class="track-card">
+          <h3>Estimate Calories From Food Image</h3>
+          <form id="foodForm">
+            <label for="foodImage">Upload Food Image:</label>
+            <input type="file" id="foodImage" accept="image/*" required>
+            <img id="previewImg" class="preview-image" src="" style="display:none;">
+            <button type="submit">Estimate Calories</button>
+            <div id="foodResult" class="est-result"></div>
+          </form>
+        </div>
+        <!-- Burned Calories Section -->
+        <div class="track-card">
+          <h3>Track Calories Burned From Exercise</h3>
+          <form id="burnForm">
+            <label for="exType">Exercise Type:</label>
+            <select id="exType" required>
+              <option value="">Choose...</option>
+              <option value="running">Running</option>
+              <option value="walking">Walking</option>
+              <option value="cycling">Cycling</option>
+              <option value="yoga">Yoga</option>
+              <option value="hiit">HIIT</option>
+              <option value="strength">Strength Training</option>
+              <option value="swimming">Swimming</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="exMinutes">Duration (minutes):</label>
+            <input type="number" id="exMinutes" min="1" max="240" required>
+            <label for="exIntensity">Intensity:</label>
+            <select id="exIntensity" required>
+              <option value="moderate">Moderate</option>
+              <option value="vigorous">Vigorous</option>
+            </select>
+            <button type="submit">Estimate Burned Calories</button>
+            <div id="burnResult" class="est-result"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Record Table for daily calories (food + burned) -->
+      <div class="record-table-holder">
+        <h3 style="text-align:left;color:#29b662;margin-top:0;margin-bottom:14px;">Daily Calorie Records</h3>
+        <form id="recordAddForm" style="display:flex;gap:22px;flex-wrap:wrap;margin-bottom:10px;">
+          <input type="date" id="recDate" required>
+          <input type="number" id="recFood" placeholder="Intake Cal (e.g. 600)" min="0" required>
+          <input type="number" id="recBurn" placeholder="Burned Cal (e.g. 250)" min="0" required>
+          <input type="text" id="recNote" style="min-width:110px;" placeholder="Notes (optional)">
+          <button type="submit" style="padding:6px 17px;">Add Record</button>
+        </form>
+        <table class="tracker-records" id="trackRecordsTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Calories In</th>
+              <th>Calories Burned</th>
+              <th>Balance</th>
+              <th>Notes</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="trackRecordsBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidecol">
+      <div class="sidebar-section">
+        <h3>Tracking Tips</h3>
+        <ul>
+          <li>Upload clear food pics to get better calorie estimates.</li>
+          <li>Be honest about portions for progress you can trust.</li>
+          <li>Use tracker daily—even on "rest" days for best results.</li>
+        </ul>
+        <div class="tip">
+          💡 <b>Pro Tip:</b> Taking 60 seconds to log your meals doubles your nutrition awareness!
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <h3>Motivation</h3>
+        <div class="motivation" id="motivationQuote"></div>
+      </div>
+    </aside>
+  </div>
+  <footer>
+    &copy; 2025 Smart Workout.<br>
+    Your health journey, visualized.
+  </footer>
+  <script src="/JS/main.js"></script>
+  <script>
+    // API URL from main.js (or fallback)
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : '/api';
+
+    // Helper to get token
+    function getHeaders() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = '/index.html'; // Protect Route
+        return {};
+      }
+      return {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      };
+    }
+
+    // SEARCH (Client side filter for now or generic)
+    // Note: Global search will be handled by main.js if we decide to move it there, 
+    // but for now keeping local handler until we implement global redirect.
+    document.getElementById('siteSearchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('siteSearchInput').value.trim();
+      if (query) {
+        // Redirect to exercises with search
+        window.location.href = `/exercises.html?search=${encodeURIComponent(query)}`;
+      }
+    };
+
+    // Motivation
+    const quotes = [
+      "Small steps in tracking = Big steps in progress.",
+      "Every log is a step closer to your fitness goal.",
+      "Stay accountable. Stay unstoppable.",
+      "You can't improve what you don't track."
+    ];
+    document.getElementById('motivationQuote').innerText = quotes[new Date().getDate() % quotes.length];
+
+    // IMAGE UPLOAD (Mock)
+    const foodImageInput = document.getElementById('foodImage');
+    const previewImg = document.getElementById('previewImg');
+    if (foodImageInput) {
+      foodImageInput.onchange = function () {
+        if (this.files && this.files[0]) {
+          let reader = new FileReader();
+          reader.onload = function (ev) {
+            previewImg.src = ev.target.result;
+            previewImg.style.display = "block";
+          };
+          reader.readAsDataURL(this.files[0]);
+        }
+      };
+      document.getElementById('foodForm').onsubmit = function (e) {
+        e.preventDefault();
+        if (foodImageInput.files.length === 0) {
+          document.getElementById('foodResult').innerText = "Please select an image.";
+          return;
+        }
+        document.getElementById('foodResult').innerText = "Estimating...";
+
+        // Hide submit button to avoid double tap during loading
+        const submitBtn = this.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.style.display = 'none';
+
+        setTimeout(() => {
+          let randomCal = 180 + Math.round(Math.random() * 220);
+
+          const resDiv = document.getElementById('foodResult');
+          resDiv.innerHTML = `
+                <div style="margin-bottom:10px;">Estimated: ${randomCal} kcal (AI – demo)</div>
+                <button type="button" onclick="resetFoodForm()" style="background:#fff;color:#29b662;border:1px solid #29b662;">Upload Another Photo</button>
+            `;
+
+          // Auto-fill
+          document.getElementById('recFood').value = randomCal;
+          document.getElementById('recNote').value = "Scanned Food";
+
+        }, 1200);
+      };
+
+      window.resetFoodForm = function () {
+        document.getElementById('foodForm').reset();
+        document.getElementById('previewImg').style.display = 'none';
+        document.getElementById('previewImg').src = '';
+        document.getElementById('foodResult').innerHTML = '';
+        // Show submit button again
+        const btn = document.querySelector('#foodForm button[type="submit"]');
+        if (btn) btn.style.display = 'inline-block';
+      };
+    }
+
+    // BURNED CALORIES (Calculator only)
+    const CALORIES_MAP = {
+      running: { moderate: 10, vigorous: 13 },
+      walking: { moderate: 4, vigorous: 7 },
+      cycling: { moderate: 8, vigorous: 11 },
+      yoga: { moderate: 3, vigorous: 5 },
+      hiit: { moderate: 10, vigorous: 15 },
+      strength: { moderate: 7, vigorous: 10 },
+      swimming: { moderate: 7, vigorous: 11 },
+      other: { moderate: 4, vigorous: 7 }
+    };
+    if (document.getElementById('burnForm')) {
+      document.getElementById('burnForm').onsubmit = function (e) {
+        e.preventDefault();
+        const type = document.getElementById('exType').value;
+        const minutes = parseInt(document.getElementById('exMinutes').value);
+        const intensity = document.getElementById('exIntensity').value;
+        if (type === "" || isNaN(minutes) || minutes < 1) {
+          document.getElementById('burnResult').innerText = "Fill all details for an estimate.";
+          return;
+        }
+        let perMin = CALORIES_MAP[type][intensity];
+        let total = perMin * minutes;
+        document.getElementById('burnResult').innerText = `~${total} kcal burned`;
+
+        // Auto-fill the add record form
+        document.getElementById('recBurn').value = total;
+        document.getElementById('recNote').value = `${type} (${minutes} min, ${intensity})`;
+      };
+    }
+
+    // === BACKEND INTEGRATION ===
+
+    // Fetch Records
+    async function fetchRecords() {
+      try {
+        const res = await fetch(`${API_URL}/tracker`, {
+          headers: getHeaders()
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          renderRecords(data);
+        } else {
+          console.error("Failed to fetch records", data);
+          if (res.status === 401) window.location.href = '/index.html'; // Token expired
+        }
+      } catch (error) {
+        console.error("Error fetching records:", error);
+      }
+    }
+
+    // Render Table
+    function renderRecords(recs) {
+      let html = "";
+      if (!recs || recs.length === 0) {
+        html = `<tr><td colspan="6" style="color:#888;font-size:.97em;">No records yet – add your first!</td></tr>`;
+      } else {
+        // Sort by date desc
+        recs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        recs.forEach(r => {
+          const dateStr = new Date(r.date).toLocaleDateString();
+          const food = r.caloriesIn || 0;
+          const burn = r.caloriesBurned || 0;
+          const bal = food - burn;
+
+          html += `<tr>
+            <td>${dateStr}</td>
+            <td>${food}</td>
+            <td>${burn}</td>
+            <td>${bal}</td>
+            <td>${r.workoutDetails || r.notes || ""}</td>
+            <td><button class="delete-btn" onclick="deleteRecord('${r._id}')">Remove</button></td>
+          </tr>`;
+        });
+      }
+      document.getElementById('trackRecordsBody').innerHTML = html;
+    }
+
+    // Add Record
+    if (document.getElementById('recordAddForm')) {
+      document.getElementById('recordAddForm').onsubmit = async function (e) {
+        e.preventDefault();
+        const date = document.getElementById('recDate').value;
+        const food = parseInt(document.getElementById('recFood').value) || 0;
+        const burned = parseInt(document.getElementById('recBurn').value) || 0;
+        const note = document.getElementById('recNote').value;
+
+        if (!date) { alert("Date is required"); return; }
+
+        const payload = {
+          date: date,
+          caloriesIn: food,
+          caloriesBurned: burned,
+          workoutDetails: note
+        };
+
+        try {
+          const res = await fetch(`${API_URL}/tracker`, {
+            method: 'POST',
+            headers: getHeaders(),
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            fetchRecords(); // Refresh table
+            e.target.reset();
+          } else {
+            const err = await res.json();
+            console.error("Error saving record:", err); // Silent error or console
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      };
+    }
+
+    // Delete Record
+    window.deleteRecord = async function (id) {
+      if (!confirm("Are you sure?")) return;
+      try {
+        const res = await fetch(`${API_URL}/tracker/${id}`, {
+          method: 'DELETE',
+          headers: getHeaders()
+        });
+        if (res.ok) {
+          fetchRecords();
+        } else {
+          console.error("Could not delete record.");
+        }
+      } catch (e) { console.error(e); }
+    }
+
+    // Init
+    fetchRecords();
+  </script>
+
+</html>

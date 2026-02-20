@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Workout - Your Fitness Journey Starts Here</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-virtual-3d-rendering-of-a-home-gym-and-fitness-space-image_3824135.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 0;
+      box-shadow: 0 1px 8px rgba(44, 173, 117, 0.08);
+      position: relative;
+      /* Changed from sticky */
+      /* top: 0; Removed */
+      z-index: 1000;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 4vw 5px 4vw;
+    }
+
+    .topbar .site-title {
+      font-size: 2em;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #28a06d;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-title img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-left: 12px;
+    }
+
+    nav {
+      margin-top: 9px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-weight: 600;
+      font-size: 1.09em;
+    }
+
+    nav a {
+      color: #444;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin: 4px 7px;
+      transition: background .23s, color .23s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #eaf2f4;
+      color: #28a06d;
+    }
+
+    .auth-bar {
+      display: flex;
+      gap: 16px;
+    }
+
+    .auth-bar button {
+      padding: 8px 22px;
+      border: none;
+      border-radius: 18px;
+      font-size: .97em;
+      font-family: inherit;
+      font-weight: 700;
+      background: #eaf2f4;
+      color: #28a06d;
+      border: 1.3px solid #28a06d;
+      cursor: pointer;
+      transition: background .23s, color .21s;
+    }
+
+    .auth-bar button.register-btn {
+      background: #28a06d;
+      border: none;
+      color: #fff;
+    }
+
+    .auth-bar button:hover {
+      background: #28a06d;
+      color: #fff;
+    }
+
+    .search-section {
+      display: flex;
+      justify-content: center;
+      padding: 25px 0 12px 0;
+      background: #f9fbfd;
+      border-bottom: 1px solid #f2f4f5;
+    }
+
+    #searchForm {
+      display: flex;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(44, 173, 117, 0.1);
+    }
+
+    #searchInput {
+      font-size: 1.09em;
+      padding: 13px 20px;
+      border: none;
+      outline: none;
+      border-radius: 20px 0 0 20px;
+      width: 260px;
+      background: inherit;
+    }
+
+    #searchForm button {
+      background: #28a06d;
+      color: #fff;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0 22px;
+      transition: background .23s;
+    }
+
+    #searchForm button:hover {
+      background: #222;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 36px auto;
+      padding: 0 2vw;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 38px;
+    }
+
+    .maincol {
+      flex: 3;
+      min-width: 320px;
+    }
+
+    .sidecol {
+      flex: 1;
+      min-width: 240px;
+      max-width: 340px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #eaf2f4 75%, #fff);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(36, 182, 98, 0.09);
+      min-height: 180px;
+      padding: 34px 8vw 32px 4vw;
+      margin-bottom: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .hero-content {
+      flex: 2;
+      min-width: 265px;
+    }
+
+    .hero-content h1 {
+      color: #28a06d;
+      font-size: 2.27em;
+      margin: 0 0 15px 0;
+      line-height: 1.09;
+      font-weight: 800;
+    }
+
+    .hero-content p {
+      font-size: 1.19em;
+      color: #444;
+      margin-bottom: 19px;
+    }
+
+    .hero-content .cta-btn {
+      background: #28a06d;
+      color: #fff;
+      border: none;
+      border-radius: 17px;
+      font-size: 1.1em;
+      font-weight: 700;
+      padding: 12px 34px;
+      cursor: pointer;
+      box-shadow: 0 2px 7px rgba(36, 182, 98, 0.13);
+      transition: background .22s;
+    }
+
+    .hero-content .cta-btn:hover {
+      background: #222;
+    }
+
+    .hero-image {
+      flex: 1;
+      max-width: 260px;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 13px;
+      box-shadow: 0 2px 9px rgba(36, 182, 98, 0.08);
+    }
+
+    /* Subscription plans */
+    #subscriptionPlansSection {
+      margin-top: 37px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 19px;
+      padding: 27px 17px 38px 17px;
+      box-shadow: 0 2px 13px rgba(0, 0, 0, .08);
+    }
+
+    .plans-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .plan-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 3px 19px rgba(0, 0, 0, 0.10);
+      padding: 32px 24px;
+      max-width: 295px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .plan-name {
+      font-size: 1.19em;
+      font-weight: 700;
+      color: #28a06d;
+      margin-bottom: 7px;
+    }
+
+    .plan-price {
+      font-size: 1.55em;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .plan-desc {
+      color: #444;
+      font-size: 1em;
+      margin-bottom: 13px;
+    }
+
+    .subscribe-btn {
+      background: #28a06d;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 26px;
+      font-size: 1.09em;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background .24s;
+    }
+
+    .subscribe-btn:hover {
+      background: #222;
+    }
+
+    /* Cards section for features/highlights */
+    .features-row {
+      display: flex;
+      gap: 30px;
+      justify-content: space-between;
+      margin: 45px 0 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .feature-card {
+      flex: 1 1 260px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 11px rgba(44, 173, 117, 0.08);
+      margin-bottom: 18px;
+      padding: 35px 23px 23px 23px;
+      text-align: center;
+      font-size: 1.03em;
+      min-width: 190px;
+    }
+
+    .feature-card h3 {
+      color: #28a06d;
+      margin: 0 0 9px 0;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: #222;
+      margin-bottom: 0;
+    }
+
+    /* Sidebar / trending */
+    .sidebar-section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(36, 182, 98, 0.08);
+      padding: 25px 18px 17px 18px;
+      margin-bottom: 27px;
+    }
+
+    .sidebar-section h3 {
+      color: #28a06d;
+      margin: 0 0 13px 0;
+      font-size: 1.17em;
+      letter-spacing: .06em;
+    }
+
+    .sidebar-section ul {
+      list-style: disc;
+      margin-left: 20px;
+      color: #222;
+      font-size: 1em;
+      margin-bottom: 2px;
+      padding-bottom: 0;
+    }
+
+    .sidebar-section li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-section .tip,
+    .sidebar-section .motivation {
+      margin-top: 13px;
+      font-size: 0.99em;
+      color: #0d7559;
+      background: #eaf2f4;
+      padding: 10px 13px;
+      border-radius: 11px;
+    }
+
+    /* Modal styles */
+    .modal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(30, 33, 45, 0.63);
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 18px rgba(0, 0, 0, 0.18);
+      padding: 33px 36px;
+      min-width: 330px;
+      max-width: 95vw;
+      position: relative;
+      min-height: 240px;
+      animation: popup .31s cubic-bezier(.45, 2, .45, .9);
+    }
+
+    @keyframes popup {
+      from {
+        transform: scale(.8) translateY(30px);
+        opacity: .2;
+      }
+
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal h2 {
+      color: #28a06d;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .modal form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .modal form input {
+      width: 100%;
+      padding: 9px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 13px;
+      font-size: 1em;
+      background: #f8f8fa;
+    }
+
+    .modal form button[type="submit"],
+    .modal form button[type="button"] {
+      background: #28a06d;
+      color: #fff;
+      padding: 8px 22px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.07em;
+      margin-top: 7px;
+      margin-right: 10px;
+      transition: background .23s;
+      cursor: pointer;
+    }
+
+    .modal form button[type="button"]:hover,
+    .modal form button[type="submit"]:hover {
+      background: #222;
+    }
+
+    .modal .switch-link {
+      display: block;
+      text-align: center;
+      margin-top: 13px;
+      color: #28a06d;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: .99em;
+      text-decoration: underline;
+    }
+
+    .modal .close-modal {
+      position: absolute;
+      top: 9px;
+      right: 17px;
+      background: none;
+      border: none;
+      font-size: 1.4em;
+      color: #bbb;
+      cursor: pointer;
+    }
+
+    @media(max-width:1050px) {
+      main {
+        flex-direction: column;
+        gap: 18px;
+      }
+    }
+
+    @media(max-width:750px) {
+      .hero {
+        flex-direction: column;
+        gap: 0;
+        padding: 18px 2vw 12px 2vw;
+      }
+
+      .features-row {
+        flex-direction: column;
+      }
+
+      .maincol,
+      .sidecol {
+        min-width: 99vw;
+      }
+
+      .maincol {
+        padding-right: 0;
+      }
+    }
+
+    @media(max-width:600px) {
+      .modal {
+        padding: 12px 3vw;
+      }
+
+      .hero-content h1 {
+        font-size: 1.19em;
+      }
+
+      .feature-card {
+        padding: 17px 4vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER + NAV -->
+  <header>
+    <div class="topbar">
+      <div class="site-title">Smart Workout
+        <img src="/image.jpeg" alt="logo" />
+      </div>
+      <div class="auth-bar">
+        <button onclick="showModal('login')">Login</button>
+        <button onclick="showModal('register')" class="register-btn">Register</button>
+      </div>
+    </div>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/diet.html">Diet</a>
+      <a href="/exercises.html">Exercises</a>
+      <a href="/tracker.html">Tracker</a>
+      <a href="/classes.html">Classes</a>
+      <a href="/trainer.html">Trainers</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/team.html">Team</a>
+      <a href="/about.html">About Us</a>
+    </nav>
+    <div class="search-section">
+      <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search workouts, guides, diets..." />
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Modal login/register -->
+  <div id="authModalBg" class="modal-bg" style="display:none;">
+    <div class="modal" id="modalContent"></div>
+  </div>
+
+  <main>
+    <h1>Motivational video to start your fitness journey </h1>
+    <iframe width="853" height="480" src="https://www.youtube.com/embed/ziCRIWMOjGo"
+      title="GET UP AND GET IT DONE - Motivational Speech" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="maincol">
+      <!-- HERO SECTION -->
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Start Your Journey to a Healthier, Stronger You!</h1>
+          <p>Professional workout & diet planning, live classes, and progress tracking. Achieve your goals with expert
+            trainers and a like-minded community.</p>
+          <button class="cta-btn" onclick="showModal('register')">Get Started Free</button>
+        </div>
+        <div class="hero-image">
+          <img src="https://i.pinimg.com/736x/a3/b5/71/a3b5715ec571388ef5c8461ac711f45e.jpg" alt="Fitness Hero" />
+        </div>
+      </div>
+
+      <!-- FEATURES SECTION -->
+      <div class="features-row">
+        <div class="feature-card">
+          <h3>Personal Diet Plans</h3>
+          <p>Get customized meal recommendations and nutrition guidance tailored for your goals.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Workout Tracker</h3>
+          <p>Track your exercises, calories, and progress with powerful tools and graphs.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Live Classes</h3>
+          <p>Join scheduled or on-demand yoga, HIIT, and strength sessions led by certified trainers.</p>
+        </div>
+      </div>
+
+      <!-- SUBSCRIPTION PLANS -->
+      <section id="subscriptionPlansSection">
+        <h2>Choose Your Subscription Plan</h2>
+        <div class="plans-row">
+          <div class="plan-card">
+            <div class="plan-name">Monthly Plan</div>
+            <div class="plan-price">₹299 / month</div>
+            <div class="plan-desc">
+              <ul style="text-align:left;padding-left:22px;">
+                <li>Unlimited workouts, diet & tracking</li>
+                <li>All live & recorded classes</li>
+                <li>Email & WhatsApp support</li>
+              </ul>
+            </div>
+            <button class="subscribe-btn" onclick="handleSubscribe('monthly')">Subscribe</button>
+          </div>
+          <div class="plan-card">
+            <div class="plan-name">Yearly Plan <span style="font-size:0.8em;color:#28a06d;">(Save 17%)</span></div>
+            <div class="plan-price">₹2999 / year</div>
+            <div class="plan-desc">
+              <ul style="text-align:left;padding-left:22px;">
+                <li>All monthly plan features</li>
+                <li>2 personal trainer sessions/year</li>
+                <li>Priority phone support</li>
+              </ul>
+            </div>
+            <button class="subscribe-btn" onclick="handleSubscribe('yearly')">Subscribe</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidecol">
+      <div class="sidebar-section">
+        <h3>Trending</h3>
+        <ul>
+          <li>7 Day Home Workout Challenge</li>
+          <li>Yoga for Mental Wellness</li>
+          <li>Low-Carb High-Protein Recipes</li>
+          <li>How to Boost Motivation</li>
+        </ul>
+        <div class="tip">
+          💡 <b>Tip:</b> Consistency beats intensity. Even a 20-minute walk daily transforms your fitness.
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <h3>Daily Motivation</h3>
+        <div class="motivation" id="motivationQuote"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    &copy; 2025 Smart Workout.<br>
+    Inspired by the best fitness coach.
+  </footer>
+
+  <script src="JS/main.js"></script>
+  <script>
+    // SEARCH bar logic
+    document.getElementById('searchForm').onsubmit = function (e) {
+      e.preventDefault();
+      var query = document.getElementById('searchInput').value.trim();
+      if (query.length === 0) {
+        alert("Please enter something to search!");
+        return;
+      }
+      alert("Searching for: " + query);
+    };
+
+    // Daily Motivation Quote
+    const quotes = [
+      "Push yourself because no one else is going to do it for you.",
+      "Small progress is still progress.",
+      "Fitness is not about being better than someone else. It's about being better than you used to be.",
+      "Don’t wish for a good body, work for it.",
+      "Every workout counts, even a short one.",
+      "You don’t have to be extreme, just consistent.",
+      "Success starts with self-discipline.",
+      "Strive for progress, not perfection."
+    ];
+    document.getElementById('motivationQuote').innerText = quotes[new Date().getDate() % quotes.length];
+  </script>
+</body>
+
+</html>
